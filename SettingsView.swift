@@ -13,21 +13,17 @@ struct SettingsView: View {
     var body: some View {
         List {
             Picker("Players", selection: $setting.playerCount) {
-                Text("2 Players").tag(2)
-                Text("3 Players").tag(3)
-                Text("4 Players").tag(4)
-                Text("5 Players").tag(5)
-                Text("6 Players").tag(6)
+                ForEach(2...6, id: \.self) {
+                    Text("\($0) Players").tag($0)
+                }
             }
-            .pickerStyle(SegmentedPickerStyle())
-            
             Picker("Lifetotal", selection: $setting.startingLife) {
                 Text("Standard").tag(20)
                 Text("Brawl").tag(25)
                 Text("Commander").tag(40)
             }
-            .pickerStyle(SegmentedPickerStyle())
         }
+        .pickerStyle(SegmentedPickerStyle())
     }
 }
 

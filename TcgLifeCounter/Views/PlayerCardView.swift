@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// https://www.hackingwithswift.com/quick-start/swiftui/how-to-automatically-switch-between-hstack-and-vstack-based-on-size-class
+
 struct PlayerCardView: View {
     @ObservedObject var player: Player
     var horizontal = false
