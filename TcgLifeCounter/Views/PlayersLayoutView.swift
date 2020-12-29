@@ -16,7 +16,7 @@ struct TwoPlayerLayoutView: View {
         if (horizontalSizeClass == nil || horizontalSizeClass == .compact) {
             VStack(spacing: 0) {
                 ForEach(players) {
-                    PlayerCardView(player: $0)
+                    PlayerCardView(player: $0, horizontal: true)
                 }
             }
         } else {
@@ -37,8 +37,6 @@ struct PlayersLayoutView: View {
             FourPlayerLayoutView(players: players)
         } else if players.count > 4 {
             FivePlayerLayoutView(players: players)
-        } else if players.count == 2 {
-            TwoPlayerLayoutView(players: players)
         } else {
             TwoPlayerLayoutView(players: players)
         }
@@ -46,7 +44,17 @@ struct PlayersLayoutView: View {
 }
 
 struct PlayersLayoutView_Previews: PreviewProvider {
+    static let players = (0..<6).map { _ in Player() }
+
     static var previews: some View {
-        PlayersLayoutView(players: [Player(), Player()])
+        ForEach(2...6, id: \.self) { num in
+            PlayersLayoutView(players: Array(players[..<num]))
+                .previewDisplayName("\(num) Players iPhone")
+                .previewDevice("iPhone 11 Pro Max")
+            
+            PlayersLayoutView(players: Array(players[..<num]))
+                .previewDisplayName("\(num) Players iPad")
+                .previewDevice("iPad Pro (12.9-inch) (4th generation)")
+        }
     }
 }

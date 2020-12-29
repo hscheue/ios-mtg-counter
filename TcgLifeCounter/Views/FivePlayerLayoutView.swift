@@ -13,7 +13,7 @@ struct FourPlayerLayoutView: View {
     let players: [Player]
     
     var horizontal: Bool {
-        horizontalSizeClass == nil || horizontalSizeClass == .compact
+        horizontalSizeClass == .regular
     }
     
     var body: some View {
@@ -37,7 +37,7 @@ struct FivePlayerLayoutView: View {
     let players: [Player]
     
     var horizontal: Bool {
-        horizontalSizeClass == nil || horizontalSizeClass == .compact
+        horizontalSizeClass == .regular
     }
     
     var body: some View {
