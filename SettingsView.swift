@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct LifeEditorView: View {
-    @Binding var customValue: String
-    
+    @EnvironmentObject var setting: Setting
     @State var value: String
     @State var errorMessage = ""
     
@@ -30,15 +29,14 @@ struct LifeEditorView: View {
                 return
             }
             
-            customValue = value
+            setting.customValue = nextInt
             errorMessage = ""
             return
         }
     }
     
     var body: some View {
-        
-        return VStack(alignment: .leading) {
+        VStack(alignment: .leading) {
             TextField(
                 "Lifetotal",
                 text: $value
@@ -61,7 +59,6 @@ struct LifeEditorView: View {
 
 struct SettingsView: View {
     @EnvironmentObject var setting: Setting
-    @State var customValue = "30"
     @State var isPresentingLifeEditor = false
     
     var body: some View {
@@ -86,20 +83,21 @@ struct SettingsView: View {
                         Text("Standard").tag(20)
                         Text("Brawl").tag(25)
                         Text("Commander").tag(40)
-                        Text("Custom").tag(Int(customValue) ?? 30)
+                        Text("Custom").tag(setting.customValue)
                     }
                 } else {
-                    LifeEditorView(
-                        customValue: $customValue,
-                        value: customValue)
+                    LifeEditorView(value: String(setting.customValue))
                 }
-                Image(systemName: "square.and.pencil")
+                Image(systemName: isPresentingLifeEditor
+                        ? "square.and.arrow.down" : "square.and.pencil")
                     .accessibilityAddTraits(.isButton)
                     .accessibilityLabel(
-                        "Change lifetotal from \(customValue)"
+                        isPresentingLifeEditor
+                            ? "Save custom life total"
+                            : "Change lifetotal from \(setting.customValue)"
                     )
                     .onTapGesture {
-                        setting.startingLife = Int(customValue) ?? 0
+                        setting.startingLife = setting.customValue
                         isPresentingLifeEditor.toggle()
                     }
             }
@@ -116,4 +114,6 @@ struct SettingsView_Previews: PreviewProvider {
             .environmentObject(Setting())
     }
 }
+
+
 
