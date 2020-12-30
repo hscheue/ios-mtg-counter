@@ -40,6 +40,7 @@ struct HVStack<Content>: View where Content : View {
 }
 
 struct PlayerCardView: View {
+    @Environment(\.colorScheme) var colorScheme
     @ObservedObject var player: Player
     var horizontal = true
     
@@ -77,7 +78,11 @@ struct PlayerCardView: View {
                             .frame(
                                 maxWidth: .infinity,
                                 maxHeight: .infinity)
-                            .background(Color.black.opacity(minusOpacity))
+                            .background(
+                                (colorScheme == ColorScheme.dark
+                                    ? Color.white
+                                    : Color.black)
+                                    .opacity(minusOpacity))
                         
                         Text("-1")
                             .rotationEffect(
@@ -102,7 +107,10 @@ struct PlayerCardView: View {
                             .frame(
                                 maxWidth: .infinity,
                                 maxHeight: .infinity)
-                            .background(Color.black.opacity(plusOpacity))
+                            .background((colorScheme == ColorScheme.dark
+                                            ? Color.white
+                                            : Color.black)
+                                            .opacity(plusOpacity))
                         
                         Text("+1")
                             .rotationEffect(
@@ -134,6 +142,9 @@ struct PlayerCardView_Previews: PreviewProvider {
             .previewDisplayName("Horizontal Display")
         PlayerCardView(player: Player(), horizontal: false)
             .previewDisplayName("Vertical Display")
+        PlayerCardView(player: Player(), horizontal: true)
+            .preferredColorScheme(.dark)
+            .previewDisplayName("Dark Mode")
         
     }
 }
