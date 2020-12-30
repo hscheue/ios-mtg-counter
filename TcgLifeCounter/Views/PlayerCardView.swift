@@ -16,13 +16,15 @@ struct HVStack<Content>: View where Content : View {
     
     var body: some View {
         if horizontal {
-            HStack(alignment: alignment.vertical, spacing: 0) {
-                content()
-            }
+            HStack(
+                alignment: alignment.vertical,
+                spacing: 0,
+                content: content)
         } else {
-            VStack(alignment: alignment.horizontal, spacing: 0) {
-                content()
-            }
+            VStack(
+                alignment: alignment.horizontal,
+                spacing: 0,
+                content: content)
         }
     }
     
