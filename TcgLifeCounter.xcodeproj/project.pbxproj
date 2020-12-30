@@ -19,7 +19,6 @@
 		A76053D125942F7A00A0A6AC /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76053D025942F7A00A0A6AC /* Layout.swift */; };
 		A76053D6259549D500A0A6AC /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76053D5259549D500A0A6AC /* SettingsView.swift */; };
 		A76B18B82597E97400565C31 /* FivePlayerLayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76B18B72597E97400565C31 /* FivePlayerLayoutView.swift */; };
-		A76B18BB2597EE3600565C31 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76B18BA2597EE3600565C31 /* TimerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,7 +36,6 @@
 		A76053D025942F7A00A0A6AC /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		A76053D5259549D500A0A6AC /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = SOURCE_ROOT; };
 		A76B18B72597E97400565C31 /* FivePlayerLayoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FivePlayerLayoutView.swift; sourceTree = "<group>"; };
-		A76B18BA2597EE3600565C31 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,7 +94,6 @@
 				A76053C625942F3B00A0A6AC /* PlayerCardView.swift */,
 				A76053CD25942F6000A0A6AC /* PlayersLayoutView.swift */,
 				A76B18B72597E97400565C31 /* FivePlayerLayoutView.swift */,
-				A76B18BA2597EE3600565C31 /* TimerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -187,7 +184,6 @@
 				A76B18B82597E97400565C31 /* FivePlayerLayoutView.swift in Sources */,
 				A76053D6259549D500A0A6AC /* SettingsView.swift in Sources */,
 				A76053CE25942F6000A0A6AC /* PlayersLayoutView.swift in Sources */,
-				A76B18BB2597EE3600565C31 /* TimerView.swift in Sources */,
 				A76053C725942F3B00A0A6AC /* PlayerCardView.swift in Sources */,
 				A76053D125942F7A00A0A6AC /* Layout.swift in Sources */,
 				A76053B425942E0700A0A6AC /* Player.swift in Sources */,
