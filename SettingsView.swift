@@ -61,7 +61,6 @@ struct LifeEditorView: View {
 
 struct SettingsView: View {
     @EnvironmentObject var setting: Setting
-    // can not be one of the defaults!?
     @State var customValue = "30"
     @State var isPresentingLifeEditor = false
     
@@ -73,7 +72,7 @@ struct SettingsView: View {
                 
                 HStack {
                     Text("Players: \(setting.playerCount)")
-                    Text("Lifetotal: \(customValue)")
+                    Text("Lifetotal: \(setting.startingLife)")
                 }
             }
             Picker("Players", selection: $setting.playerCount) {
@@ -117,3 +116,4 @@ struct SettingsView_Previews: PreviewProvider {
             .environmentObject(Setting())
     }
 }
+
