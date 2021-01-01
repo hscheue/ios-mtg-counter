@@ -38,8 +38,6 @@ struct MyView: View {
     
     var body: some View {
         Picker("Color Scheme", selection: $storedColorScheme) {
-            Text("System Colors")
-                .tag(StoredColorScheme.system)
             Text("Light Scheme")
                 .tag(StoredColorScheme.light)
             Text("Dark Scheme")
