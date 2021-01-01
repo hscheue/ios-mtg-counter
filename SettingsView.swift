@@ -101,6 +101,7 @@ struct SettingsView: View {
                         isPresentingLifeEditor.toggle()
                     }
             }
+            MyView()
         }
         .pickerStyle(SegmentedPickerStyle())
     }

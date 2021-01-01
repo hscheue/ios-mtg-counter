@@ -62,7 +62,13 @@ struct FivePlayerLayoutView: View {
 struct FivePlayerLayoutView_Previews: PreviewProvider {
     static var previews: some View {
         FivePlayerLayoutView(
-            players: [Player(), Player(), Player(), Player(), Player()]
+            players: [
+                Player(),
+                Player(),
+                Player(),
+                Player(),
+                Player()
+            ]
         )
     }
 }

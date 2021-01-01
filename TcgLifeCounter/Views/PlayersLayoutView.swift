@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct TwoPlayerLayoutView: View {
-    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    @Environment(\.horizontalSizeClass)
+    var horizontalSizeClass
     
     let players: [Player]
     
