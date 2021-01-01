@@ -13,7 +13,7 @@ struct NavigationBarModifier: ViewModifier {
     
     init(backgroundColor: UIColor?) {
         self.backgroundColor = backgroundColor
-
+        
         let coloredAppearance = UINavigationBarAppearance()
         coloredAppearance.configureWithTransparentBackground()
         coloredAppearance.backgroundColor = .clear
@@ -59,9 +59,17 @@ struct Trailing: View {
                 Image(systemName: "arrow.triangle.2.circlepath")
                     .font(.system(size: 32))
             }
-
-            NavigationLink(destination: SettingsView()
-                            .navigationBarColor(.gray)) {
+            
+            NavigationLink(
+                destination: DieRollView().navigationBarColor(.gray)
+            ) {
+                Image(systemName: "die.face.5.fill")
+                    .font(.system(size: 32))
+            }
+            
+            NavigationLink(
+                destination: SettingsView().navigationBarColor(.gray)
+            ) {
                 Image(systemName: "gearshape.fill")
                     .font(.system(size: 32))
             }
@@ -75,7 +83,7 @@ struct ContentView: View {
     
     func createPlayers(playerCount: Int) {
         players.removeAll()
-                
+        
         for _ in 0..<playerCount {
             players.append(Player(life: settings.startingLife))
         }
