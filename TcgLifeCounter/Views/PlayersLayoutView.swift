@@ -8,13 +8,12 @@
 import SwiftUI
 
 struct TwoPlayerLayoutView: View {
-    @Environment(\.horizontalSizeClass)
-    var horizontalSizeClass
+    @Environment(\.verticalSizeClass) var verticalSizeClass
     
     let players: [Player]
     
     var body: some View {
-        if (horizontalSizeClass == nil || horizontalSizeClass == .compact) {
+        if verticalSizeClass == nil || verticalSizeClass == .regular {
             VStack(spacing: 0) {
                 ForEach(players) {
                     PlayerCardView(player: $0, horizontal: true)

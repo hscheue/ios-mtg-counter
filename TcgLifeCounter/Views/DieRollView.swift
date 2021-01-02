@@ -41,18 +41,37 @@ struct RandomElementView: View {
 }
 
 struct DieRollView: View {
+    @Environment(\.verticalSizeClass) var verticalSizeClass
+    
     let dice = [2, 4, 6, 8, 10, 12, 20, 100]
+    
     var columns: [GridItem] =
         Array(repeating: .init(.flexible(minimum: 20, maximum: 200)), count: 2)
     
+    var rows: [GridItem] =
+        Array(repeating: .init(.flexible(minimum: 20, maximum: 200)), count: 2)
+    
     var body: some View {
-        LazyVGrid(columns: columns, alignment: .center, spacing: 16) {
-            ForEach(dice, id: \.self) {
-                RandomElementView(sides: $0)
-                    .font(.system(size: 64))
-                    .frame(width: 200, height: 128)
+        if verticalSizeClass == .regular {
+            LazyVGrid(columns: columns, alignment: .center, spacing: 16) {
+                ForEach(dice, id: \.self) {
+                    RandomElementView(sides: $0)
+                        .font(.system(size: 64))
+                        .frame(width: 200, height: 128)
+                }
             }
         }
+        
+        if verticalSizeClass != .regular {
+            LazyHGrid(rows: rows, alignment: .center, spacing: 16) {
+                ForEach(dice, id: \.self) {
+                    RandomElementView(sides: $0)
+                        .font(.system(size: 64))
+                        .frame(width: 200, height: 128)
+                }
+            }
+        }
+        
     }
 }
 
