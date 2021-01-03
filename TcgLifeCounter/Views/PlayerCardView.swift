@@ -145,6 +145,5 @@ struct PlayerCardView_Previews: PreviewProvider {
         PlayerCardView(player: Player(), horizontal: true)
             .preferredColorScheme(.dark)
             .previewDisplayName("Dark Mode")
-        
     }
 }

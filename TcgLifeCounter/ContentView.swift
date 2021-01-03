@@ -49,9 +49,7 @@ extension View {
 }
 
 struct Trailing: View {
-    var restartAction: () -> Void = {
-        print("Not set")
-    }
+    let restartAction: () -> Void
     
     var body: some View {
         HStack {
@@ -80,6 +78,7 @@ struct Trailing: View {
 struct ContentView: View {
     @StateObject var settings = Setting()
     @State var players = [Player]()
+    @State var isPresentingRestartAlert = false
     
     func createPlayers(playerCount: Int) {
         players.removeAll()
@@ -102,9 +101,17 @@ struct ContentView: View {
                 .ignoresSafeArea(edges: .bottom)
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationBarItems(
-                    trailing: Trailing(restartAction: resetPlayers)
+                    trailing: Trailing(restartAction: { isPresentingRestartAlert = true })
                 )
                 .navigationBarColor(.gray)
+                .alert(isPresented: $isPresentingRestartAlert) {
+                    Alert(
+                        title: Text("New Game"),
+                        message: Text("Are you sure you want to reset player life totals?"),
+                        primaryButton: Alert.Button.destructive(Text("Reset"), action: resetPlayers),
+                        secondaryButton: .cancel()
+                    )
+                }
         }
         .navigationViewStyle(StackNavigationViewStyle())
         .environmentObject(settings)
