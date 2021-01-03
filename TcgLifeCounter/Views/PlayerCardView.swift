@@ -127,11 +127,15 @@ struct PlayerCardView: View {
                 }
             }
             
-            Text("\(player.life) Life")
-                .font(.system(size: 48))
-                .rotationEffect(
-                    horizontal ? .zero : .degrees(90))
-                .allowsHitTesting(false)
+            VStack {
+                Text("\(player.life)")
+                    .font(.system(size: 48))
+                Text("Life")
+                    .font(.system(size: 16))
+            }
+            .rotationEffect(
+                horizontal ? .zero : .degrees(90))
+            .allowsHitTesting(false)
         }
     }
 }
