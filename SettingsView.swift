@@ -80,16 +80,20 @@ struct SettingsView: View {
             HStack {
                 if !isPresentingLifeEditor {
                     Picker("Lifetotal", selection: $setting.startingLife) {
-                        Text("Standard").tag(20)
-                        Text("Brawl").tag(25)
-                        Text("Commander").tag(40)
-                        Text("Custom").tag(setting.customValue)
+                        Text("Standard")
+                            .tag(20)
+                        Text("Brawl")
+                            .tag(25)
+                        Text("Commander")
+                            .tag(40)
+                        Text("Custom")
+                            .tag(setting.customValue)
                     }
                 } else {
                     LifeEditorView(value: String(setting.customValue))
                 }
                 Image(systemName: isPresentingLifeEditor
-                        ? "square.and.arrow.down" : "square.and.pencil")
+                        ? "checkmark.circle" : "square.and.pencil")
                     .accessibilityAddTraits(.isButton)
                     .accessibilityLabel(
                         isPresentingLifeEditor
