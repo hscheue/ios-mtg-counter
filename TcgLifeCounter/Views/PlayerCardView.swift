@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 // https://www.hackingwithswift.com/quick-start/swiftui/how-to-automatically-switch-between-hstack-and-vstack-based-on-size-class
 
@@ -39,6 +40,23 @@ struct HVStack<Content>: View where Content : View {
     }
 }
 
+// can with animations go in here?
+class ClickState: ObservableObject {
+    var cancellable: AnyCancellable?
+    @Published var value: Int = 0
+    @Published var opacity = 0
+
+    init() {
+        cancellable = $value
+            .filter { $0 != 0 }
+            .debounce(for: .seconds(2), scheduler: RunLoop.main)
+            .sink { change in
+                self.value = 0
+                // TODO: on debounce add to history
+            }
+    }
+}
+
 struct PlayerCardView: View {
     @Environment(\.colorScheme) var colorScheme
     @ObservedObject var player: Player
@@ -46,9 +64,24 @@ struct PlayerCardView: View {
     
     @State var minusOpacity = 0.0
     @State var plusOpacity = 0.0
+    @State var changeOpacity = 0.0
+    @State var changeOffset: CGFloat = 0
+    @StateObject var clickState = ClickState()
     
     func adjustLifeByTap(by adjustment: Int) {
         player.life += adjustment
+        clickState.value += adjustment
+        
+        changeOffset = 10
+        withAnimation {
+            changeOffset = 0
+        }
+        
+        changeOpacity = 0.0
+        withAnimation {
+            changeOpacity = 1.0
+        }
+        
         if adjustment < 0 {
             minusOpacity = 0.2
             withAnimation {
@@ -62,8 +95,20 @@ struct PlayerCardView: View {
         }
     }
     
+    func formattedLifeChange(_ life: Int) -> String {
+        life == 0
+            ? ""
+            : life > 0
+            ? "+\(life)"
+            : "\(life)"
+    }
+    
+    var changeColor: Color {
+        clickState.value > 0 ? Color.green : Color.red
+    }
+    
     var body: some View {
-        ZStack {
+        return ZStack {
             Rectangle()
                 .strokeBorder(Color.gray.opacity(0.2), style: StrokeStyle(lineWidth: 1))
             
@@ -128,6 +173,12 @@ struct PlayerCardView: View {
             }
             
             VStack {
+                Text(formattedLifeChange(clickState.value))
+                    .foregroundColor(changeColor)
+                    .font(.system(size: 32))
+                    .opacity(changeOpacity)
+                    .offset(x: 0, y: changeOffset)
+                
                 Text("\(player.life)")
                     .font(.system(size: 48))
                 Text("Life")
