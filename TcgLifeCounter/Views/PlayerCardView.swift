@@ -99,14 +99,6 @@ struct PlayerCardView: View {
         }
     }
     
-    func formattedLifeChange(_ life: Int) -> String {
-        life == 0
-            ? ""
-            : life > 0
-            ? "+\(life)"
-            : "\(life)"
-    }
-    
     var changeColor: Color {
         clickState.value > 0 ? Color.green : Color.red
     }

@@ -51,8 +51,12 @@ struct DieRollView: View {
     var rows: [GridItem] =
         Array(repeating: .init(.flexible(minimum: 20, maximum: 200)), count: 2)
     
+    var verticalOrientation: Bool {
+        verticalSizeClass == nil || verticalSizeClass == .compact
+    }
+    
     var body: some View {
-        if verticalSizeClass == .regular {
+        if verticalOrientation {
             LazyVGrid(columns: columns, alignment: .center, spacing: 16) {
                 ForEach(dice, id: \.self) {
                     RandomElementView(sides: $0)
@@ -60,9 +64,7 @@ struct DieRollView: View {
                         .frame(width: 200, height: 128)
                 }
             }
-        }
-        
-        if verticalSizeClass != .regular {
+        } else {
             LazyHGrid(rows: rows, alignment: .center, spacing: 16) {
                 ForEach(dice, id: \.self) {
                     RandomElementView(sides: $0)

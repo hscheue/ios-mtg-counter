@@ -96,22 +96,25 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            PlayersLayoutView(players: players)
-                .ignoresSafeArea(edges: .horizontal)
-                .ignoresSafeArea(edges: .bottom)
-                .navigationBarTitleDisplayMode(.inline)
-                .navigationBarItems(
-                    trailing: Trailing(restartAction: { isPresentingRestartAlert = true })
+            PlayersLayoutView(
+                players: players,
+                outwards: settings.playersFaceOutwards
+            )
+            .ignoresSafeArea(edges: .horizontal)
+            .ignoresSafeArea(edges: .bottom)
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarItems(
+                trailing: Trailing(restartAction: { isPresentingRestartAlert = true })
+            )
+            .navigationBarColor(.gray)
+            .alert(isPresented: $isPresentingRestartAlert) {
+                Alert(
+                    title: Text("New Game"),
+                    message: Text("Are you sure you want to reset player life totals?"),
+                    primaryButton: Alert.Button.destructive(Text("Reset"), action: resetPlayers),
+                    secondaryButton: .cancel()
                 )
-                .navigationBarColor(.gray)
-                .alert(isPresented: $isPresentingRestartAlert) {
-                    Alert(
-                        title: Text("New Game"),
-                        message: Text("Are you sure you want to reset player life totals?"),
-                        primaryButton: Alert.Button.destructive(Text("Reset"), action: resetPlayers),
-                        secondaryButton: .cancel()
-                    )
-                }
+            }
         }
         .navigationViewStyle(StackNavigationViewStyle())
         .environmentObject(settings)
