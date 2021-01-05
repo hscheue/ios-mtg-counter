@@ -51,7 +51,9 @@ class ClickState: ObservableObject {
             .filter { $0 != 0 }
             .debounce(for: .seconds(2), scheduler: RunLoop.main)
             .sink { change in
-                self.value = 0
+                withAnimation { // so this does work!?
+                    self.value = 0
+                }
                 // TODO: on debounce add to history
             }
     }
@@ -70,7 +72,9 @@ struct PlayerCardView: View {
     
     func adjustLifeByTap(by adjustment: Int) {
         player.life += adjustment
-        clickState.value += adjustment
+        withAnimation {
+            clickState.value += adjustment
+        }
         
         changeOffset = 10
         withAnimation {
@@ -173,11 +177,13 @@ struct PlayerCardView: View {
             }
             
             VStack {
-                Text(formattedLifeChange(clickState.value))
-                    .foregroundColor(changeColor)
-                    .font(.system(size: 32))
-                    .opacity(changeOpacity)
-                    .offset(x: 0, y: changeOffset)
+                if clickState.value != 0 {
+                    Text("\(clickState.value, specifier: "%+d")")
+                        .foregroundColor(changeColor)
+                        .font(.system(size: 32))
+                        .opacity(changeOpacity)
+                        .offset(x: 0, y: changeOffset)
+                }
                 
                 Text("\(player.life)")
                     .font(.system(size: 48))
