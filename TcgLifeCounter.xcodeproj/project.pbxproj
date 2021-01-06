@@ -27,6 +27,7 @@
 		A79F552025A52FAE00522361 /* D12Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79F551F25A52FAE00522361 /* D12Shape.swift */; };
 		A79F552325A53D1500522361 /* D20Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79F552225A53D1500522361 /* D20Shape.swift */; };
 		A79F552625A5414800522361 /* D100.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79F552525A5414800522361 /* D100.swift */; };
+		A79F552C25A66BAD00522361 /* HVStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79F552B25A66BAD00522361 /* HVStack.swift */; };
 		A7CECA33259FB9A900B783C5 /* DieRollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CECA32259FB9A900B783C5 /* DieRollView.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +54,7 @@
 		A79F551F25A52FAE00522361 /* D12Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D12Shape.swift; sourceTree = "<group>"; };
 		A79F552225A53D1500522361 /* D20Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D20Shape.swift; sourceTree = "<group>"; };
 		A79F552525A5414800522361 /* D100.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D100.swift; sourceTree = "<group>"; };
+		A79F552B25A66BAD00522361 /* HVStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HVStack.swift; sourceTree = "<group>"; };
 		A7CECA32259FB9A900B783C5 /* DieRollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DieRollView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -86,6 +88,7 @@
 		A70511F02593F28C002D801F /* TcgLifeCounter */ = {
 			isa = PBXGroup;
 			children = (
+				A79F552A25A66B9F00522361 /* Shared */,
 				A79F550D25A5165000522361 /* Shapes */,
 				A76053C025942E5700A0A6AC /* Models */,
 				A76053BF25942E4C00A0A6AC /* Views */,
@@ -109,8 +112,8 @@
 		A76053BF25942E4C00A0A6AC /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				A76053D5259549D500A0A6AC /* SettingsView.swift */,
 				A76053C625942F3B00A0A6AC /* PlayerCardView.swift */,
+				A76053D5259549D500A0A6AC /* SettingsView.swift */,
 				A76053CD25942F6000A0A6AC /* PlayersLayoutView.swift */,
 				A76B18B72597E97400565C31 /* FivePlayerLayoutView.swift */,
 				A7CECA32259FB9A900B783C5 /* DieRollView.swift */,
@@ -142,6 +145,14 @@
 				A79F552525A5414800522361 /* D100.swift */,
 			);
 			path = Shapes;
+			sourceTree = "<group>";
+		};
+		A79F552A25A66B9F00522361 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				A79F552B25A66BAD00522361 /* HVStack.swift */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -221,6 +232,7 @@
 				A79F550F25A5165F00522361 /* D2Shape.swift in Sources */,
 				A76B18B82597E97400565C31 /* FivePlayerLayoutView.swift in Sources */,
 				A79F551725A51C0600522361 /* D6Shape.swift in Sources */,
+				A79F552C25A66BAD00522361 /* HVStack.swift in Sources */,
 				A7CECA33259FB9A900B783C5 /* DieRollView.swift in Sources */,
 				A76053D6259549D500A0A6AC /* SettingsView.swift in Sources */,
 				A76053CE25942F6000A0A6AC /* PlayersLayoutView.swift in Sources */,
