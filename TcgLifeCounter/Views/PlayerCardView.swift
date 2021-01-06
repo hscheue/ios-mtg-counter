@@ -28,27 +28,16 @@ class ClickState: ObservableObject {
 }
 
 struct PlayerCardView: View {
-    @Environment(\.colorScheme) var colorScheme
     @ObservedObject var player: Player
     var horizontal = true
 
-    @State var changeOpacity = 0.0
-    @State var changeOffset: CGFloat = 0
-    @StateObject var clickState = ClickState()
+    @StateObject private var clickState = ClickState()
     
     func adjustLifeByTap(by adjustment: Int) {
         player.life += adjustment
-        changeOffset = 10
-        changeOpacity = 0.0
         withAnimation {
             clickState.value += adjustment
-            changeOffset = 0
-            changeOpacity = 1.0
         }
-    }
-    
-    var changeColor: Color {
-        clickState.value > 0 ? Color.green : Color.red
     }
     
     var body: some View {
@@ -69,40 +58,16 @@ struct PlayerCardView: View {
                 )
             }
             
-            VStack {
-                if clickState.value != 0 {
-                    Text("\(clickState.value, specifier: "%+d")")
-                        .foregroundColor(changeColor)
-                        .font(.system(size: 32))
-                        .opacity(changeOpacity)
-                        .offset(x: 0, y: changeOffset)
-                }
-                
-                Text("\(player.life)")
-                    .font(.system(size: 48))
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.5)
-                Text("Life")
-                    .font(.system(size: 16))
-            }
-            .rotationEffect(
-                horizontal ? .zero : .degrees(90))
-            .allowsHitTesting(false)
+            PresentedLifeView(
+                changeLife: clickState.value,
+                currentLife: player.life,
+                horizontal: horizontal
+            )
         }
     }
 }
 
-struct PlayerCardView_Previews: PreviewProvider {
-    static var previews: some View {
-        PlayerCardView(player: Player(), horizontal: true)
-            .previewDisplayName("Horizontal Display")
-        PlayerCardView(player: Player(), horizontal: false)
-            .previewDisplayName("Vertical Display")
-        PlayerCardView(player: Player(), horizontal: true)
-            .preferredColorScheme(.dark)
-            .previewDisplayName("Dark Mode")
-    }
-}
+
 
 struct ButtonView: View {
     @ObservedObject var player: Player
@@ -133,9 +98,9 @@ struct ButtonView: View {
                     .background(backgroundColor.opacity(opacity))
                 
                 Text("-1")
-                    .rotationEffect(horizontal ? .zero : .degrees(90))
                     .font(.system(size: 32))
-                    .offset(x: horizontal ? 10 : 10, y: horizontal ? -10 : 10)
+                    .offset(x: 10,y: -10)
+                    .rotationEffect(horizontal ? .zero : .degrees(90))
                     .foregroundColor(.gray)
                     .allowsHitTesting(false)
             }
@@ -172,12 +137,66 @@ struct ButtonAddView: View {
                     .background(backgroundColor.opacity(opacity))
                 
                 Text("+1")
+                    .offset(x: -10, y: -10)
                     .rotationEffect(horizontal ? .zero : .degrees(90))
                     .font(.system(size: 32))
-                    .offset(x: horizontal ? -10 : 10, y: horizontal ? -10 : -10)
                     .foregroundColor(.gray)
                     .allowsHitTesting(false)
             }
         }
+    }
+}
+
+struct PresentedLifeView: View {
+    let changeLife: Int
+    let currentLife: Int
+    let horizontal: Bool
+    
+    private var changeColor: Color {
+        changeLife > 0 ? Color.green : Color.red
+    }
+    @State private var changeOpacity: Double = 0
+    @State private var changeOffset: CGFloat = 10
+
+    var body: some View {
+        VStack {
+            if changeLife != 0 {
+                Text("\(changeLife, specifier: "%+d")")
+                    .foregroundColor(changeColor)
+                    .font(.system(size: 32))
+                    .opacity(changeOpacity)
+                    .offset(x: 0, y: changeOffset)
+            }
+            
+            Text("\(currentLife)")
+                .font(.system(size: 48))
+                .lineLimit(1)
+                .minimumScaleFactor(0.5)
+            
+            Text("Life")
+                .font(.system(size: 16))
+        }
+        .onChange(of: changeLife) { _ in
+            changeOpacity = 0
+            changeOffset = 10
+            withAnimation {
+                changeOpacity = 1
+                changeOffset = 0
+            }
+        }
+        .rotationEffect(horizontal ? .zero : .degrees(90))
+        .allowsHitTesting(false)
+    }
+}
+
+struct PlayerCardView_Previews: PreviewProvider {
+    static var previews: some View {
+        PlayerCardView(player: Player(), horizontal: true)
+            .previewDisplayName("Horizontal Display")
+        PlayerCardView(player: Player(), horizontal: false)
+            .previewDisplayName("Vertical Display")
+        PlayerCardView(player: Player(), horizontal: true)
+            .preferredColorScheme(.dark)
+            .previewDisplayName("Dark Mode")
     }
 }
