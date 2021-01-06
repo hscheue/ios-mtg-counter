@@ -20,12 +20,18 @@ struct FourPlayerLayoutView: View {
     var body: some View {
         HVStack(horizontal: vertical) {
             HVStack(horizontal: !vertical) {
-                PlayerCardView(
-                    player: players[0],
-                    horizontal: !vertical)
-                PlayerCardView(
-                    player: players[1],
-                    horizontal: !vertical)
+                Group {
+                    PlayerCardView(
+                        player: players[0],
+                        horizontal: !vertical)
+                    PlayerCardView(
+                        player: players[1],
+                        horizontal: !vertical)
+                }
+                .rotationEffect(
+                    outwards && !vertical
+                        ? .degrees(180)
+                        : .zero)
             }
             
             HVStack(horizontal: !vertical) {
@@ -64,15 +70,21 @@ struct FivePlayerLayoutView: View {
         GeometryReader { geo in
             HVStack(horizontal: !horizontal) {
                 HVStack(horizontal: horizontal) {
-                    PlayerCardView(
-                        player: players[0],
-                        horizontal: horizontal)
-                    PlayerCardView(
-                        player: players[1],
-                        horizontal: horizontal)
-                    PlayerCardView(
-                        player: players[2],
-                        horizontal: horizontal)
+                    Group {
+                        PlayerCardView(
+                            player: players[0],
+                            horizontal: horizontal)
+                        PlayerCardView(
+                            player: players[1],
+                            horizontal: horizontal)
+                        PlayerCardView(
+                            player: players[2],
+                            horizontal: horizontal)
+                    }
+                    .rotationEffect(
+                        outwards && horizontal
+                            ? .degrees(180)
+                            : .zero)
                 }
                 
                 HVStack(horizontal: horizontal) {
