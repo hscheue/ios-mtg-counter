@@ -30,7 +30,6 @@ struct RandomElementView: View {
         if !isPresentingChoice {
             Text("D\(sides)")
                 .padding()
-                .background(RoundedRectangle(cornerRadius: 8).strokeBorder())
                 .onTapGesture {
                     setRandomValue()
                     self.isPresentingChoice = true
@@ -40,37 +39,117 @@ struct RandomElementView: View {
     
 }
 
+struct RandomElementGroupView: View {
+    let side: CGFloat = 150
+    let bgSide: CGFloat = 100
+    let fontSize: CGFloat = 32
+    
+    var body: some View {
+        Group {
+            RandomElementView(sides: 2)
+                .font(.system(size: fontSize))
+                .frame(width: side, height: side)
+                .background(
+                    D2Shape()
+                        .stroke()
+                        .opacity(0.5)
+                        .frame(width: bgSide, height: bgSide))
+            
+            RandomElementView(sides: 4)
+                .font(.system(size: fontSize))
+                .frame(width: side, height: side)
+                .background(
+                    D4Shape()
+                        .stroke()
+                        .opacity(0.5)
+                        .frame(width: bgSide, height: bgSide))
+            
+            RandomElementView(sides: 6)
+                .font(.system(size: fontSize))
+                .frame(width: side, height: side)
+                .background(
+                    D6Shape()
+                        .stroke()
+                        .opacity(0.5)
+                        .frame(width: bgSide, height: bgSide))
+            
+            RandomElementView(sides: 8)
+                .font(.system(size: fontSize))
+                .frame(width: side, height: side)
+                .background(
+                    D8Shape()
+                        .stroke()
+                        .opacity(0.5)
+                        .frame(width: bgSide, height: bgSide))
+            
+            RandomElementView(sides: 10)
+                .font(.system(size: fontSize))
+                .frame(width: side, height: side)
+                .background(
+                    D10Shape()
+                        .stroke()
+                        .opacity(0.5)
+                        .frame(width: bgSide, height: bgSide))
+            
+            RandomElementView(sides: 12)
+                .font(.system(size: fontSize))
+                .frame(width: side, height: side)
+                .background(
+                    D12Shape()
+                        .stroke()
+                        .opacity(0.5)
+                        .frame(width: bgSide, height: bgSide))
+            
+            RandomElementView(sides: 20)
+                .font(.system(size: fontSize))
+                .frame(width: side, height: side)
+                .background(
+                    D20Shape()
+                        .stroke()
+                        .opacity(0.5)
+                        .frame(width: bgSide, height: bgSide))
+            
+            RandomElementView(sides: 100)
+                .font(.system(size: fontSize))
+                .frame(width: side, height: side)
+                .background(
+                    D100Shape()
+                        .stroke()
+                        .opacity(0.5)
+                        .frame(width: bgSide, height: bgSide))
+        }
+    }
+}
+
 struct DieRollView: View {
     @Environment(\.verticalSizeClass) var verticalSizeClass
     
-    let dice = [2, 4, 6, 8, 10, 12, 20, 100]
-    
     var columns: [GridItem] =
-        Array(repeating: .init(.flexible(minimum: 20, maximum: 200)), count: 2)
+        Array(repeating: .init(.flexible(minimum: 20, maximum: 150)), count: 2)
     
     var rows: [GridItem] =
-        Array(repeating: .init(.flexible(minimum: 20, maximum: 200)), count: 2)
+        Array(repeating: .init(.flexible(minimum: 20, maximum: 150)), count: 2)
     
     var verticalOrientation: Bool {
-        verticalSizeClass == nil || verticalSizeClass == .compact
+        verticalSizeClass == nil || verticalSizeClass == .regular
     }
     
     var body: some View {
         if verticalOrientation {
-            LazyVGrid(columns: columns, alignment: .center, spacing: 16) {
-                ForEach(dice, id: \.self) {
-                    RandomElementView(sides: $0)
-                        .font(.system(size: 64))
-                        .frame(width: 200, height: 128)
-                }
+            LazyVGrid(
+                columns: columns,
+                alignment: .center,
+                spacing: 16
+            ) {
+                RandomElementGroupView()
             }
         } else {
-            LazyHGrid(rows: rows, alignment: .center, spacing: 16) {
-                ForEach(dice, id: \.self) {
-                    RandomElementView(sides: $0)
-                        .font(.system(size: 64))
-                        .frame(width: 200, height: 128)
-                }
+            LazyHGrid(
+                rows: rows,
+                alignment: .center,
+                spacing: 16
+            ) {
+                RandomElementGroupView()
             }
         }
         

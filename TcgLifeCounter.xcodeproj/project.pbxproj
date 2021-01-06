@@ -19,6 +19,14 @@
 		A76053D125942F7A00A0A6AC /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76053D025942F7A00A0A6AC /* Layout.swift */; };
 		A76053D6259549D500A0A6AC /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76053D5259549D500A0A6AC /* SettingsView.swift */; };
 		A76B18B82597E97400565C31 /* FivePlayerLayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76B18B72597E97400565C31 /* FivePlayerLayoutView.swift */; };
+		A79F550F25A5165F00522361 /* D2Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79F550E25A5165F00522361 /* D2Shape.swift */; };
+		A79F551325A5194400522361 /* D4Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79F551225A5194400522361 /* D4Shape.swift */; };
+		A79F551725A51C0600522361 /* D6Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79F551625A51C0600522361 /* D6Shape.swift */; };
+		A79F551A25A51D4000522361 /* D8Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79F551925A51D4000522361 /* D8Shape.swift */; };
+		A79F551D25A51F3D00522361 /* D10Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79F551C25A51F3D00522361 /* D10Shape.swift */; };
+		A79F552025A52FAE00522361 /* D12Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79F551F25A52FAE00522361 /* D12Shape.swift */; };
+		A79F552325A53D1500522361 /* D20Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79F552225A53D1500522361 /* D20Shape.swift */; };
+		A79F552625A5414800522361 /* D100.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79F552525A5414800522361 /* D100.swift */; };
 		A7CECA33259FB9A900B783C5 /* DieRollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CECA32259FB9A900B783C5 /* DieRollView.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +45,14 @@
 		A76053D025942F7A00A0A6AC /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		A76053D5259549D500A0A6AC /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = SOURCE_ROOT; };
 		A76B18B72597E97400565C31 /* FivePlayerLayoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FivePlayerLayoutView.swift; sourceTree = "<group>"; };
+		A79F550E25A5165F00522361 /* D2Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D2Shape.swift; sourceTree = "<group>"; };
+		A79F551225A5194400522361 /* D4Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4Shape.swift; sourceTree = "<group>"; };
+		A79F551625A51C0600522361 /* D6Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D6Shape.swift; sourceTree = "<group>"; };
+		A79F551925A51D4000522361 /* D8Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D8Shape.swift; sourceTree = "<group>"; };
+		A79F551C25A51F3D00522361 /* D10Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D10Shape.swift; sourceTree = "<group>"; };
+		A79F551F25A52FAE00522361 /* D12Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D12Shape.swift; sourceTree = "<group>"; };
+		A79F552225A53D1500522361 /* D20Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D20Shape.swift; sourceTree = "<group>"; };
+		A79F552525A5414800522361 /* D100.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D100.swift; sourceTree = "<group>"; };
 		A7CECA32259FB9A900B783C5 /* DieRollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DieRollView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,6 +86,7 @@
 		A70511F02593F28C002D801F /* TcgLifeCounter */ = {
 			isa = PBXGroup;
 			children = (
+				A79F550D25A5165000522361 /* Shapes */,
 				A76053C025942E5700A0A6AC /* Models */,
 				A76053BF25942E4C00A0A6AC /* Views */,
 				A70511F12593F28C002D801F /* TcgLifeCounterApp.swift */,
@@ -110,6 +127,21 @@
 				A76053D025942F7A00A0A6AC /* Layout.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		A79F550D25A5165000522361 /* Shapes */ = {
+			isa = PBXGroup;
+			children = (
+				A79F550E25A5165F00522361 /* D2Shape.swift */,
+				A79F551225A5194400522361 /* D4Shape.swift */,
+				A79F551625A51C0600522361 /* D6Shape.swift */,
+				A79F551925A51D4000522361 /* D8Shape.swift */,
+				A79F551C25A51F3D00522361 /* D10Shape.swift */,
+				A79F551F25A52FAE00522361 /* D12Shape.swift */,
+				A79F552225A53D1500522361 /* D20Shape.swift */,
+				A79F552525A5414800522361 /* D100.swift */,
+			);
+			path = Shapes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,15 +215,23 @@
 			files = (
 				A70511F42593F28C002D801F /* ContentView.swift in Sources */,
 				A76053BA25942E2E00A0A6AC /* Game.swift in Sources */,
+				A79F552325A53D1500522361 /* D20Shape.swift in Sources */,
 				A76053C325942E7900A0A6AC /* Setting.swift in Sources */,
+				A79F552025A52FAE00522361 /* D12Shape.swift in Sources */,
+				A79F550F25A5165F00522361 /* D2Shape.swift in Sources */,
 				A76B18B82597E97400565C31 /* FivePlayerLayoutView.swift in Sources */,
+				A79F551725A51C0600522361 /* D6Shape.swift in Sources */,
 				A7CECA33259FB9A900B783C5 /* DieRollView.swift in Sources */,
 				A76053D6259549D500A0A6AC /* SettingsView.swift in Sources */,
 				A76053CE25942F6000A0A6AC /* PlayersLayoutView.swift in Sources */,
 				A76053C725942F3B00A0A6AC /* PlayerCardView.swift in Sources */,
 				A76053D125942F7A00A0A6AC /* Layout.swift in Sources */,
+				A79F552625A5414800522361 /* D100.swift in Sources */,
+				A79F551325A5194400522361 /* D4Shape.swift in Sources */,
 				A76053B425942E0700A0A6AC /* Player.swift in Sources */,
 				A70511F22593F28C002D801F /* TcgLifeCounterApp.swift in Sources */,
+				A79F551A25A51D4000522361 /* D8Shape.swift in Sources */,
+				A79F551D25A51F3D00522361 /* D10Shape.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
