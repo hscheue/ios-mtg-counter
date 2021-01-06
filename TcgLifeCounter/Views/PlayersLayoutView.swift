@@ -68,6 +68,7 @@ struct ThreePlayerLayoutView: View {
                             PlayerCardView(
                                 player: players[0]
                             )
+                            .rotationEffect(.degrees(180))
                             PlayerCardView(
                                 player: players[1]
                             )
