@@ -20,14 +20,12 @@ struct FourPlayerLayoutView: View {
     var body: some View {
         HVStack(horizontal: vertical) {
             HVStack(horizontal: !vertical) {
-                Group {
-                    PlayerCardView(
-                        player: players[0],
-                        horizontal: !vertical)
-                    PlayerCardView(
-                        player: players[1],
-                        horizontal: !vertical)
-                }
+                PlayerCardView(
+                    player: players[0],
+                    horizontal: !vertical)
+                PlayerCardView(
+                    player: players[1],
+                    horizontal: !vertical)
             }
             
             HVStack(horizontal: !vertical) {
