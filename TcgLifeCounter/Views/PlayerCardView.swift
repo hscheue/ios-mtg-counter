@@ -179,6 +179,8 @@ struct PlayerCardView: View {
                 
                 Text("\(player.life)")
                     .font(.system(size: 48))
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.5)
                 Text("Life")
                     .font(.system(size: 16))
             }

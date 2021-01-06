@@ -45,22 +45,41 @@ struct ThreePlayerLayoutView: View {
             TwoPlayerLayoutView(players: players)
         } else {
             GeometryReader { geo in
-                VStack(spacing: 0) {
+                if geo.size.width < geo.size.height {
+                    VStack(spacing: 0) {
+                        HStack(spacing: 0) {
+                            PlayerCardView(
+                                player: players[0],
+                                horizontal: false
+                            )
+                            PlayerCardView(
+                                player: players[1],
+                                horizontal: false
+                            )
+                                .rotationEffect(.degrees(180))
+                        }.frame(
+                            width: geo.size.width,
+                            height: geo.size.height * 0.66)
+                        PlayerCardView(player: players[2])
+                    }
+                } else {
                     HStack(spacing: 0) {
-                        PlayerCardView(
-                            player: players[0],
-                            horizontal: false
-                        )
-                        PlayerCardView(
-                            player: players[1],
-                            horizontal: false
-                        )
+                        VStack(spacing: 0) {
+                            PlayerCardView(
+                                player: players[0]
+                            )
+                            PlayerCardView(
+                                player: players[1]
+                            )
+                                
+                        }.frame(
+                            width: geo.size.width * 0.66,
+                            height: geo.size.height)
+                        PlayerCardView(player: players[2], horizontal: false)
                             .rotationEffect(.degrees(180))
-                    }.frame(
-                        width: geo.size.width,
-                        height: geo.size.height * 0.66)
-                    PlayerCardView(player: players[2])
+                    }
                 }
+                
             }
         }
     }

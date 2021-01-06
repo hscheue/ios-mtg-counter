@@ -13,38 +13,37 @@ struct FourPlayerLayoutView: View {
     let players: [Player]
     var outwards: Bool = false
     
-    var horizontal: Bool {
-        verticalSizeClass == nil || verticalSizeClass == .compact
+    var vertical: Bool {
+        verticalSizeClass == nil || verticalSizeClass == .regular
     }
     
     var body: some View {
-        HStack(spacing: 0) {
-            VStack(spacing: 0) {
-                PlayerCardView(
-                    player: players[0],
-                    horizontal: horizontal
-                )
-                PlayerCardView(
-                    player: players[1],
-                    horizontal: horizontal
-                )
+        HVStack(horizontal: vertical) {
+            HVStack(horizontal: !vertical) {
+                Group {
+                    PlayerCardView(
+                        player: players[0],
+                        horizontal: !vertical)
+                    PlayerCardView(
+                        player: players[1],
+                        horizontal: !vertical)
+                }
             }
             
-            VStack(spacing: 0) {
-                PlayerCardView(
-                    player: players[2],
-                    horizontal: horizontal
-                )
+            HVStack(horizontal: !vertical) {
+                Group {
+                    PlayerCardView(
+                        player: players[2],
+                        horizontal: !vertical
+                    )
+                    
+                    PlayerCardView(
+                        player: players[3],
+                        horizontal: !vertical
+                    )
+                }
                 .rotationEffect(
-                    outwards
-                        ? .degrees(180)
-                        : .zero)
-                PlayerCardView(
-                    player: players[3],
-                    horizontal: horizontal
-                )
-                .rotationEffect(
-                    outwards
+                    outwards && vertical
                         ? .degrees(180)
                         : .zero)
             }
@@ -64,42 +63,38 @@ struct FivePlayerLayoutView: View {
     }
     
     var body: some View {
-        HStack(spacing: 0) {
-            VStack(spacing: 0) {
-                PlayerCardView(
-                    player: players[0],
-                    horizontal: horizontal)
-                PlayerCardView(
-                    player: players[1],
-                    horizontal: horizontal)
-                PlayerCardView(
-                    player: players[2],
-                    horizontal: horizontal)
-            }
-            
-            VStack(spacing: 0) {
-                PlayerCardView(
-                    player: players[3],
-                    horizontal: horizontal)
-                    .rotationEffect(
-                        outwards
-                            ? .degrees(180)
-                            : .zero)
-                PlayerCardView(
-                    player: players[4],
-                    horizontal: horizontal)
-                    .rotationEffect(
-                        outwards
-                            ? .degrees(180)
-                            : .zero)
-                if players.count == 6 {
+        GeometryReader { geo in
+            HVStack(horizontal: !horizontal) {
+                HVStack(horizontal: horizontal) {
                     PlayerCardView(
-                        player: players[5],
+                        player: players[0],
                         horizontal: horizontal)
-                        .rotationEffect(
-                            outwards
-                                ? .degrees(180)
-                                : .zero)
+                    PlayerCardView(
+                        player: players[1],
+                        horizontal: horizontal)
+                    PlayerCardView(
+                        player: players[2],
+                        horizontal: horizontal)
+                }
+                
+                HVStack(horizontal: horizontal) {
+                    Group {
+                        PlayerCardView(
+                            player: players[3],
+                            horizontal: horizontal)
+                        PlayerCardView(
+                            player: players[4],
+                            horizontal: horizontal)
+                        if players.count == 6 {
+                            PlayerCardView(
+                                player: players[5],
+                                horizontal: horizontal)
+                        }
+                    }
+                    .rotationEffect(
+                        outwards && !horizontal
+                            ? .degrees(180)
+                            : .zero)
                 }
             }
         }
@@ -116,6 +111,36 @@ struct FivePlayerLayoutView_Previews: PreviewProvider {
                 Player(),
                 Player()
             ]
+        )
+        
+        FivePlayerLayoutView(
+            players: [
+                Player(),
+                Player(),
+                Player(),
+                Player(),
+                Player()
+            ],
+            outwards: true
+        )
+        
+        FourPlayerLayoutView(
+            players: [
+                Player(),
+                Player(),
+                Player(),
+                Player()
+            ]
+        )
+        
+        FourPlayerLayoutView(
+            players: [
+                Player(),
+                Player(),
+                Player(),
+                Player()
+            ],
+            outwards: true
         )
     }
 }
