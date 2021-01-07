@@ -8,22 +8,15 @@
 import SwiftUI
 import Combine
 
-// can with animations go in here?
 class ClickState: ObservableObject {
     var cancellable: AnyCancellable?
+
     @Published var value: Int = 0
-    @Published var opacity = 0
     
     init() {
         cancellable = $value
-            .filter { $0 != 0 }
             .debounce(for: .seconds(2), scheduler: RunLoop.main)
-            .sink { change in
-                withAnimation { // so this does work!?
-                    self.value = 0
-                }
-                // TODO: on debounce add to history
-            }
+            .sink { change in withAnimation { self.value = 0 } }
     }
 }
 
@@ -35,13 +28,11 @@ struct PlayerCardView: View {
     
     func adjustLifeByTap(by adjustment: Int) {
         player.life += adjustment
-        withAnimation {
-            clickState.value += adjustment
-        }
+        withAnimation { clickState.value += adjustment }
     }
     
     var body: some View {
-        return ZStack {
+        ZStack {
             Rectangle()
                 .strokeBorder(Color.gray.opacity(0.2), style: StrokeStyle(lineWidth: 1))
             
