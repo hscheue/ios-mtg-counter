@@ -30,6 +30,7 @@ struct RandomElementView: View {
         if !isPresentingChoice {
             Text("D\(sides)")
                 .padding()
+                .contentShape(Circle())
                 .onTapGesture {
                     setRandomValue()
                     self.isPresentingChoice = true

@@ -120,9 +120,9 @@ struct ContentView: View {
         .environmentObject(settings)
         // replace with onChange?
         .onReceive(settings.$playerCount, perform: createPlayers)
-        .onReceive(settings.$startingLife, perform: { lifeCount in
+        .onReceive(settings.$startingLife) { lifeCount in
             players.forEach { $0.life = lifeCount }
-        })
+        }
     }
 }
 

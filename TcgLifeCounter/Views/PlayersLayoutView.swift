@@ -8,14 +8,11 @@
 import SwiftUI
 
 struct TwoPlayerLayoutView: View {
-    @Environment(\.verticalSizeClass) var verticalSizeClass
-    
     let players: [Player]
     var outwards = false
     
-    var isVerticalStack: Bool {
-        verticalSizeClass == nil || verticalSizeClass == .regular
-    }
+    @Environment(\.verticalSizeClass) var verticalSizeClass
+    var isVerticalStack: Bool { verticalSizeClass != .compact }
     
     var body: some View {
         HVStack(horizontal: !isVerticalStack) {
@@ -30,57 +27,35 @@ struct TwoPlayerLayoutView: View {
     }
 }
 
-// Should be between stack and corners! single scorekeeper means same direction no matter what!
 struct ThreePlayerLayoutView: View {
     let players: [Player]
     var outwards: Bool = false
     
     @Environment(\.verticalSizeClass) var verticalSizeClass
-    var isVerticalStack: Bool {
-        verticalSizeClass == nil || verticalSizeClass == .regular
-    }
+    var isVerticalStack: Bool { verticalSizeClass != .compact }
     
     var body: some View {
         if !outwards {
             TwoPlayerLayoutView(players: players)
         } else {
             GeometryReader { geo in
-                if geo.size.width < geo.size.height {
-                    VStack(spacing: 0) {
-                        HStack(spacing: 0) {
-                            PlayerCardView(
-                                player: players[0],
-                                horizontal: false
-                            )
-                            PlayerCardView(
-                                player: players[1],
-                                horizontal: false
-                            )
-                                .rotationEffect(.degrees(180))
-                        }.frame(
-                            width: geo.size.width,
-                            height: geo.size.height * 0.66)
-                        PlayerCardView(player: players[2])
-                    }
-                } else {
-                    HStack(spacing: 0) {
-                        VStack(spacing: 0) {
-                            PlayerCardView(
-                                player: players[0]
-                            )
-                            .rotationEffect(.degrees(180))
-                            PlayerCardView(
-                                player: players[1]
-                            )
-                                
-                        }.frame(
-                            width: geo.size.width * 0.66,
-                            height: geo.size.height)
-                        PlayerCardView(player: players[2], horizontal: false)
-                            .rotationEffect(.degrees(180))
-                    }
-                }
+                let isLandscape = geo.size.width < geo.size.height
                 
+                HVStack(horizontal: !isLandscape) {
+                    HVStack(horizontal: isLandscape) {
+                        ForEach(0..<2, id: \.self) { index in
+                            PlayerCardView(player: players[index], horizontal: !isVerticalStack)
+                                .rotationEffect(!isLandscape && index == 0 ? .degrees(180) : .zero)
+                                .rotationEffect(isLandscape && index == 1 ? .degrees(180) : .zero)
+                        }
+                    }
+                    .frame(
+                        width: geo.size.width * (!isLandscape ? 0.66 : 1),
+                        height: geo.size.height * (isLandscape ? 0.66 : 1)
+                    )
+                    PlayerCardView(player: players[2], horizontal: false)
+                        .rotationEffect(!isLandscape ? .degrees(180) : .zero)
+                }
             }
         }
     }
@@ -96,7 +71,7 @@ struct PlayersLayoutView: View {
         } else if players.count == 4 {
             FourPlayerLayoutView(players: players, outwards: outwards)
         } else if players.count > 4 {
-            FivePlayerLayoutView(players: players, outwards: outwards)
+            FiveSixPlayerLayoutView(players: players, outwards: outwards)
         } else {
             TwoPlayerLayoutView(players: players, outwards: outwards)
         }
@@ -115,37 +90,6 @@ struct PlayersLayoutView_Previews: PreviewProvider {
                 )
                 .previewDisplayName("\(num) Players iPhone\(outwards ? " outwards" : "")")
                 .previewDevice("iPhone 11 Pro Max")
-                
-                PlayersLayoutView(
-                    players: Array(players[..<num]),
-                    outwards: outwards
-                )
-                .previewDisplayName("\(num) Players iPad\(outwards ? " outwards" : "")")
-                .previewDevice("iPad Pro (12.9-inch) (4th generation)")
-            }
-        }
-    }
-}
-
-struct PlayerLayoutView_PreviewsMore: PreviewProvider {
-    static let players = (0..<6).map { _ in Player() }
-    
-    static var previews: some View {
-        ForEach(5...6, id: \.self) { num in
-            ForEach([false, true], id: \.self) { outwards in
-                PlayersLayoutView(
-                    players: Array(players[..<num]),
-                    outwards: outwards
-                )
-                .previewDisplayName("\(num) Players iPhone\(outwards ? " outwards" : "")")
-                .previewDevice("iPhone 11 Pro Max")
-                
-                PlayersLayoutView(
-                    players: Array(players[..<num]),
-                    outwards: outwards
-                )
-                .previewDisplayName("\(num) Players iPad\(outwards ? " outwards" : "")")
-                .previewDevice("iPad Pro (12.9-inch) (4th generation)")
             }
         }
     }

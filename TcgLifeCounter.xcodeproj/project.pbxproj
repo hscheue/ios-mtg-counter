@@ -18,7 +18,7 @@
 		A76053CE25942F6000A0A6AC /* PlayersLayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76053CD25942F6000A0A6AC /* PlayersLayoutView.swift */; };
 		A76053D125942F7A00A0A6AC /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76053D025942F7A00A0A6AC /* Layout.swift */; };
 		A76053D6259549D500A0A6AC /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76053D5259549D500A0A6AC /* SettingsView.swift */; };
-		A76B18B82597E97400565C31 /* FivePlayerLayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76B18B72597E97400565C31 /* FivePlayerLayoutView.swift */; };
+		A76B18B82597E97400565C31 /* FiveSixPlayerLayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76B18B72597E97400565C31 /* FiveSixPlayerLayoutView.swift */; };
 		A79F550F25A5165F00522361 /* D2Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79F550E25A5165F00522361 /* D2Shape.swift */; };
 		A79F551325A5194400522361 /* D4Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79F551225A5194400522361 /* D4Shape.swift */; };
 		A79F551725A51C0600522361 /* D6Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79F551625A51C0600522361 /* D6Shape.swift */; };
@@ -45,7 +45,7 @@
 		A76053CD25942F6000A0A6AC /* PlayersLayoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersLayoutView.swift; sourceTree = "<group>"; };
 		A76053D025942F7A00A0A6AC /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		A76053D5259549D500A0A6AC /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = SOURCE_ROOT; };
-		A76B18B72597E97400565C31 /* FivePlayerLayoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FivePlayerLayoutView.swift; sourceTree = "<group>"; };
+		A76B18B72597E97400565C31 /* FiveSixPlayerLayoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveSixPlayerLayoutView.swift; sourceTree = "<group>"; };
 		A79F550E25A5165F00522361 /* D2Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D2Shape.swift; sourceTree = "<group>"; };
 		A79F551225A5194400522361 /* D4Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4Shape.swift; sourceTree = "<group>"; };
 		A79F551625A51C0600522361 /* D6Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D6Shape.swift; sourceTree = "<group>"; };
@@ -115,7 +115,7 @@
 				A76053C625942F3B00A0A6AC /* PlayerCardView.swift */,
 				A76053D5259549D500A0A6AC /* SettingsView.swift */,
 				A76053CD25942F6000A0A6AC /* PlayersLayoutView.swift */,
-				A76B18B72597E97400565C31 /* FivePlayerLayoutView.swift */,
+				A76B18B72597E97400565C31 /* FiveSixPlayerLayoutView.swift */,
 				A7CECA32259FB9A900B783C5 /* DieRollView.swift */,
 			);
 			path = Views;
@@ -230,7 +230,7 @@
 				A76053C325942E7900A0A6AC /* Setting.swift in Sources */,
 				A79F552025A52FAE00522361 /* D12Shape.swift in Sources */,
 				A79F550F25A5165F00522361 /* D2Shape.swift in Sources */,
-				A76B18B82597E97400565C31 /* FivePlayerLayoutView.swift in Sources */,
+				A76B18B82597E97400565C31 /* FiveSixPlayerLayoutView.swift in Sources */,
 				A79F551725A51C0600522361 /* D6Shape.swift in Sources */,
 				A79F552C25A66BAD00522361 /* HVStack.swift in Sources */,
 				A7CECA33259FB9A900B783C5 /* DieRollView.swift in Sources */,
