@@ -8,9 +8,41 @@
 import SwiftUI
 import Combine
 
+struct HalfRoundedRect: Shape {
+    enum Side {
+        case top, right, bottom, left
+        
+        var corners: UIRectCorner {
+            switch self {
+            case .top:
+                return [.topLeft, .topRight]
+            case .right:
+                return [.topRight, .bottomRight]
+            case .bottom:
+                return [.bottomRight, .bottomLeft]
+            case .left:
+                return [.bottomLeft, .topLeft]
+            }
+        }
+    }
+    
+    init(_ side: Side) {
+        self.side = side
+    }
+    
+    let side: Side
+    
+    func path(in rect: CGRect) -> Path {
+        Path(UIBezierPath(
+                roundedRect: rect,
+                byRoundingCorners: side.corners,
+                cornerRadii: CGSize(width: 43, height: 43)).cgPath)
+    }
+}
+
 class ClickState: ObservableObject {
     var cancellable: AnyCancellable?
-
+    
     @Published var value: Int = 0
     
     init() {
@@ -21,9 +53,10 @@ class ClickState: ObservableObject {
 }
 
 struct PlayerCardView: View {
+    @Environment(\.colorScheme) var colorScheme
     @ObservedObject var player: Player
     var horizontal = true
-
+    
     @StateObject private var clickState = ClickState()
     
     func adjustLifeByTap(by adjustment: Int) {
@@ -32,9 +65,10 @@ struct PlayerCardView: View {
     }
     
     var body: some View {
+        
+        let fillColor = colorScheme == .light ? Color.white : Color.black
         ZStack {
-            Rectangle()
-                .strokeBorder(Color.gray.opacity(0.2), style: StrokeStyle(lineWidth: 1))
+            Rectangle().fill(fillColor)
             
             HVStack(horizontal: horizontal) {
                 ButtonView(
@@ -55,6 +89,9 @@ struct PlayerCardView: View {
                 horizontal: horizontal
             )
         }
+        .clipShape(RoundedRectangle(cornerRadius: 42.0, style: .continuous))
+        .shadow(color: Color.gray.opacity(0.4), radius: 7, x: 2.0, y: 2.0)
+        .padding(4)
     }
 }
 
@@ -90,12 +127,13 @@ struct ButtonView: View {
                 
                 Text("-1")
                     .font(.system(size: 32))
-                    .offset(x: 10,y: -10)
+                    .offset(x: 30,y: -15)
                     .rotationEffect(horizontal ? .zero : .degrees(90))
                     .foregroundColor(.gray)
                     .allowsHitTesting(false)
             }
         }
+        .contentShape(HalfRoundedRect(horizontal ? .left : .top))
     }
 }
 
@@ -128,13 +166,14 @@ struct ButtonAddView: View {
                     .background(backgroundColor.opacity(opacity))
                 
                 Text("+1")
-                    .offset(x: -10, y: -10)
+                    .offset(x: -30, y: -15)
                     .rotationEffect(horizontal ? .zero : .degrees(90))
                     .font(.system(size: 32))
                     .foregroundColor(.gray)
                     .allowsHitTesting(false)
             }
         }
+        .contentShape(HalfRoundedRect(horizontal ? .right : .bottom))
     }
 }
 
@@ -148,7 +187,7 @@ struct PresentedLifeView: View {
     }
     @State private var changeOpacity: Double = 0
     @State private var changeOffset: CGFloat = 10
-
+    
     var body: some View {
         VStack {
             if changeLife != 0 {
