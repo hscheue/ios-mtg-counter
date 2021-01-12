@@ -7,8 +7,13 @@
 
 import SwiftUI
 
-struct RandomElementView: View {
+struct RandomElementView<S>: View where S : Shape  {
+    let side: CGFloat = 150
+    let bgSide: CGFloat = 100
+    
+    
     let sides: Int
+    let shape: S
     
     @State var randomChoice: Int = -1
     @State var isPresentingChoice = false
@@ -22,10 +27,15 @@ struct RandomElementView: View {
             Text("\(randomChoice)")
                 .onAppear(perform: {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
-                        self.isPresentingChoice = false
+                        withAnimation {
+                            self.isPresentingChoice = false
+                        }
                     }
                 })
+                .font(.system(size: 64))
+                .transition(.scale)
         }
+    
         
         if !isPresentingChoice {
             Text("D\(sides)")
@@ -33,91 +43,57 @@ struct RandomElementView: View {
                 .contentShape(Circle())
                 .onTapGesture {
                     setRandomValue()
-                    self.isPresentingChoice = true
+                    withAnimation {
+                        self.isPresentingChoice = true
+                    }
                 }
+                .transition(.scale)
+                .background(shape
+                                .stroke()
+                                .opacity(0.5)
+                                .frame(width: bgSide, height: bgSide))
         }
     }
     
 }
 
 struct RandomElementGroupView: View {
-    let side: CGFloat = 150
-    let bgSide: CGFloat = 100
     let fontSize: CGFloat = 32
-    
+    let side: CGFloat = 150
+
     var body: some View {
         Group {
-            RandomElementView(sides: 2)
+            RandomElementView(sides: 2, shape: D2Shape())
                 .font(.system(size: fontSize))
                 .frame(width: side, height: side)
-                .background(
-                    D2Shape()
-                        .stroke()
-                        .opacity(0.5)
-                        .frame(width: bgSide, height: bgSide))
             
-            RandomElementView(sides: 4)
+            RandomElementView(sides: 4, shape: D4Shape())
                 .font(.system(size: fontSize))
                 .frame(width: side, height: side)
-                .background(
-                    D4Shape()
-                        .stroke()
-                        .opacity(0.5)
-                        .frame(width: bgSide, height: bgSide))
             
-            RandomElementView(sides: 6)
+            RandomElementView(sides: 6, shape: D6Shape())
                 .font(.system(size: fontSize))
                 .frame(width: side, height: side)
-                .background(
-                    D6Shape()
-                        .stroke()
-                        .opacity(0.5)
-                        .frame(width: bgSide, height: bgSide))
             
-            RandomElementView(sides: 8)
+            RandomElementView(sides: 8, shape: D8Shape())
                 .font(.system(size: fontSize))
                 .frame(width: side, height: side)
-                .background(
-                    D8Shape()
-                        .stroke()
-                        .opacity(0.5)
-                        .frame(width: bgSide, height: bgSide))
             
-            RandomElementView(sides: 10)
+            RandomElementView(sides: 10, shape: D10Shape())
                 .font(.system(size: fontSize))
                 .frame(width: side, height: side)
-                .background(
-                    D10Shape()
-                        .stroke()
-                        .opacity(0.5)
-                        .frame(width: bgSide, height: bgSide))
             
-            RandomElementView(sides: 12)
+            RandomElementView(sides: 12, shape: D12Shape())
                 .font(.system(size: fontSize))
                 .frame(width: side, height: side)
-                .background(
-                    D12Shape()
-                        .stroke()
-                        .opacity(0.5)
-                        .frame(width: bgSide, height: bgSide))
             
-            RandomElementView(sides: 20)
+            RandomElementView(sides: 20, shape: D20Shape())
                 .font(.system(size: fontSize))
                 .frame(width: side, height: side)
-                .background(
-                    D20Shape()
-                        .stroke()
-                        .opacity(0.5)
-                        .frame(width: bgSide, height: bgSide))
             
-            RandomElementView(sides: 100)
+            RandomElementView(sides: 100, shape: D100Shape())
                 .font(.system(size: fontSize))
                 .frame(width: side, height: side)
-                .background(
-                    D100Shape()
-                        .stroke()
-                        .opacity(0.5)
-                        .frame(width: bgSide, height: bgSide))
         }
     }
 }
