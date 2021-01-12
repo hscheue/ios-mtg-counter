@@ -59,14 +59,15 @@ struct Trailing: View {
             }
             
             NavigationLink(
-                destination: DieRollView().navigationBarColor(.gray)
+                destination: DieRollView().navigationBarColor(UIColor(named: "NavBackgroundColor"))
             ) {
                 Image(systemName: "die.face.5.fill")
                     .font(.system(size: 32))
             }
             
             NavigationLink(
-                destination: SettingsView().navigationBarColor(.gray)
+                destination: SettingsView()
+                    .navigationBarColor(UIColor(named: "NavBackgroundColor"))
             ) {
                 Image(systemName: "gearshape.fill")
                     .font(.system(size: 32))
@@ -107,7 +108,7 @@ struct ContentView: View {
             .navigationBarItems(
                 trailing: Trailing(restartAction: { isPresentingRestartAlert = true })
             )
-            .navigationBarColor(.gray)
+            .navigationBarColor(UIColor(named: "NavBackgroundColor"))
             .alert(isPresented: $isPresentingRestartAlert) {
                 Alert(
                     title: Text("New Game"),
