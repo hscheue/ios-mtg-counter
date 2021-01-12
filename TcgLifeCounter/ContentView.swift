@@ -100,6 +100,7 @@ struct ContentView: View {
                 players: players,
                 outwards: settings.playersFaceOutwards
             )
+            .background(Color( "ViewBackgroundColor"))
             .ignoresSafeArea(edges: .horizontal)
             .ignoresSafeArea(edges: .bottom)
             .navigationBarTitleDisplayMode(.inline)

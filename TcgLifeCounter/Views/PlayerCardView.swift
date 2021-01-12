@@ -65,8 +65,13 @@ struct PlayerCardView: View {
     }
     
     var body: some View {
+        let fillColor = colorScheme == .light
+            ? Color.white : Color.black
         
-        let fillColor = colorScheme == .light ? Color.white : Color.black
+        let shadowColor = colorScheme == .light
+            ? Color.gray.opacity(0.4)
+            : Color.black
+        
         ZStack {
             Rectangle().fill(fillColor)
             
@@ -90,7 +95,7 @@ struct PlayerCardView: View {
             )
         }
         .clipShape(RoundedRectangle(cornerRadius: 42.0, style: .continuous))
-        .shadow(color: Color.gray.opacity(0.4), radius: 7, x: 2.0, y: 2.0)
+        .shadow(color: shadowColor, radius: 7, x: 2.0, y: 2.0)
         .padding(4)
     }
 }
