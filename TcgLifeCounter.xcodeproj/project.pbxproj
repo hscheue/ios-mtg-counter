@@ -88,7 +88,7 @@
 		A70511F02593F28C002D801F /* TcgLifeCounter */ = {
 			isa = PBXGroup;
 			children = (
-				A79F552A25A66B9F00522361 /* Shared */,
+				A79F552A25A66B9F00522361 /* SharedViews */,
 				A79F550D25A5165000522361 /* Shapes */,
 				A76053C025942E5700A0A6AC /* Models */,
 				A76053BF25942E4C00A0A6AC /* Views */,
@@ -147,12 +147,12 @@
 			path = Shapes;
 			sourceTree = "<group>";
 		};
-		A79F552A25A66B9F00522361 /* Shared */ = {
+		A79F552A25A66B9F00522361 /* SharedViews */ = {
 			isa = PBXGroup;
 			children = (
 				A79F552B25A66BAD00522361 /* HVStack.swift */,
 			);
-			path = Shared;
+			path = SharedViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
