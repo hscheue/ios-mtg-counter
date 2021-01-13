@@ -12,7 +12,12 @@ struct FourPlayerLayoutView: View {
     var outwards: Bool = false
     let indexRanges = [0..<2, 2..<4]
     @Environment(\.verticalSizeClass) var verticalSizeClass
-    var vertical: Bool { verticalSizeClass != .compact }
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    
+    var vertical: Bool {
+        verticalSizeClass != .compact
+            && horizontalSizeClass != .regular
+    }
     
     var body: some View {
         HVStack(horizontal: vertical) {
@@ -36,7 +41,12 @@ struct FiveSixPlayerLayoutView: View {
     let indexRanges = [0..<3, 3..<6]
     
     @Environment(\.verticalSizeClass) var verticalSizeClass
-    var vertical: Bool { verticalSizeClass != .compact }
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    
+    var vertical: Bool {
+        verticalSizeClass != .compact
+            && horizontalSizeClass != .regular
+    }
     
     var body: some View {
         HVStack(horizontal: vertical) {

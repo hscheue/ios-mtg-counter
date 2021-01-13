@@ -92,7 +92,6 @@ struct PlayersLayoutView_Previews: PreviewProvider {
                     outwards: outwards
                 )
                 .previewDisplayName("\(num) Players iPhone\(outwards ? " outwards" : "")")
-                .previewDevice("iPhone 11 Pro Max")
             }
         }
     }
