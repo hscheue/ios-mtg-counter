@@ -32,7 +32,14 @@ struct PlayerCardView: View {
     // MARK: View Body
     var body: some View {
         ZStack {
-            Rectangle().fill(fillColor)
+            Rectangle()
+                .fill(fillColor)
+            
+            Rectangle()
+                .fill(opacityGradientHorizontal)
+            
+            Rectangle()
+                .fill(opacityGradientVertical)
             
             HVStack(horizontal: horizontal) {
                 ButtonView(
@@ -59,8 +66,28 @@ struct PlayerCardView: View {
     }
     
     // MARK: Computed
+    var gradient: Gradient {
+        let base = colorScheme == .dark
+            ? Color.white
+            : Color.black
+        
+        return .init(stops: [
+            Gradient.Stop(color: base.opacity(0.05), location: 0.05),
+            Gradient.Stop(color: base.opacity(0.01), location: 0.1),
+            Gradient.Stop(color: base.opacity(0), location: 0.3),
+            Gradient.Stop(color: base.opacity(0), location: 0.7),
+            Gradient.Stop(color: base.opacity(0.01), location: 0.9),
+            Gradient.Stop(color: base.opacity(0.05), location: 0.95),
+        ])
+    }
+    var opacityGradientHorizontal: LinearGradient {
+        .init(gradient: gradient, startPoint: .leading, endPoint: .trailing)
+    }
+    var opacityGradientVertical: LinearGradient {
+        .init(gradient: gradient, startPoint: .top, endPoint: .bottom)
+    }
     var fillColor: Color {
-        colorScheme == .light ? Color.white : Color.black
+        colorScheme == .light ? Color.white : Color(white: 0.1)
     }
     var shadowColor: Color {
         colorScheme == .light ? Color.gray.opacity(0.4) : Color.black
@@ -72,8 +99,6 @@ struct PlayerCardView: View {
         withAnimation { clickState.value += adjustment }
     }
 }
-
-
 
 struct ButtonView: View {
     @ObservedObject var player: Player
@@ -156,7 +181,18 @@ struct ButtonAddView: View {
 }
 
 struct PlayerCardView_Previews: PreviewProvider {
+    
+    static let players = (0..<2).map { _ in Player() }
+    
     static var previews: some View {
+        PlayersLayoutView(
+            players: Array(players[..<2]),
+            outwards: false
+        )
+        PlayersLayoutView(
+            players: Array(players[..<2]),
+            outwards: false
+        ).preferredColorScheme(.dark)
         PlayerCardView(player: Player(), horizontal: true)
             .previewDisplayName("Horizontal Display")
         PlayerCardView(player: Player(), horizontal: false)

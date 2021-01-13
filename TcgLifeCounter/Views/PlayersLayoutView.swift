@@ -66,15 +66,18 @@ struct PlayersLayoutView: View {
     var outwards: Bool = false
     
     var body: some View {
-        if players.count == 3 {
-            ThreePlayerLayoutView(players: players, outwards: outwards)
-        } else if players.count == 4 {
-            FourPlayerLayoutView(players: players, outwards: outwards)
-        } else if players.count > 4 {
-            FiveSixPlayerLayoutView(players: players, outwards: outwards)
-        } else {
-            TwoPlayerLayoutView(players: players, outwards: outwards)
+        Group {
+            if players.count == 3 {
+                ThreePlayerLayoutView(players: players, outwards: outwards)
+            } else if players.count == 4 {
+                FourPlayerLayoutView(players: players, outwards: outwards)
+            } else if players.count > 4 {
+                FiveSixPlayerLayoutView(players: players, outwards: outwards)
+            } else {
+                TwoPlayerLayoutView(players: players, outwards: outwards)
+            }
         }
+        .padding(4)
     }
 }
 
