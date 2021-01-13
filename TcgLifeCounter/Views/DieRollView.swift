@@ -7,11 +7,28 @@
 
 import SwiftUI
 
+struct DiceRoll: Identifiable {
+    let id = UUID()
+    let display: String
+}
+
+class DiceHistory: ObservableObject {
+    private let LIMIT = 10
+    @Published var rollHistory = [DiceRoll]()
+    
+    func addRoll(value: Int, sides: Int) {
+        rollHistory.append(DiceRoll(display: "\(value) / \(sides)"))
+        if rollHistory.count > LIMIT {
+            rollHistory.removeFirst(rollHistory.count - LIMIT)
+
+        }
+    }
+}
+
 struct RandomElementView<S>: View where S : Shape  {
-    let side: CGFloat = 150
+    @EnvironmentObject private var diceHistory: DiceHistory
     let bgSide: CGFloat = 100
-    
-    
+
     let sides: Int
     let shape: S
     
@@ -35,7 +52,7 @@ struct RandomElementView<S>: View where S : Shape  {
                 .font(.system(size: 64))
                 .transition(.scale)
         }
-    
+        
         
         if !isPresentingChoice {
             Text("D\(sides)")
@@ -45,22 +62,23 @@ struct RandomElementView<S>: View where S : Shape  {
                     setRandomValue()
                     withAnimation {
                         self.isPresentingChoice = true
+                        diceHistory.addRoll(value: self.randomChoice, sides: sides)
                     }
                 }
                 .transition(.scale)
-                .background(shape
-                                .stroke()
-                                .opacity(0.5)
-                                .frame(width: bgSide, height: bgSide))
+                .background(
+                    shape
+                        .stroke()
+                        .opacity(0.5)
+                        .frame(width: bgSide, height: bgSide))
         }
     }
-    
 }
 
 struct RandomElementGroupView: View {
-    let fontSize: CGFloat = 32
-    let side: CGFloat = 150
-
+    private let fontSize: CGFloat = 32
+    private let side: CGFloat = 150
+    
     var body: some View {
         Group {
             RandomElementView(sides: 2, shape: D2Shape())
@@ -99,12 +117,10 @@ struct RandomElementGroupView: View {
 }
 
 struct DieRollView: View {
+    @StateObject private var diceHistory = DiceHistory()
     @Environment(\.verticalSizeClass) var verticalSizeClass
     
-    var columns: [GridItem] =
-        Array(repeating: .init(.flexible(minimum: 20, maximum: 150)), count: 2)
-    
-    var rows: [GridItem] =
+    var sizing: [GridItem] =
         Array(repeating: .init(.flexible(minimum: 20, maximum: 150)), count: 2)
     
     var verticalOrientation: Bool {
@@ -112,24 +128,35 @@ struct DieRollView: View {
     }
     
     var body: some View {
-        if verticalOrientation {
-            LazyVGrid(
-                columns: columns,
-                alignment: .center,
-                spacing: 16
-            ) {
-                RandomElementGroupView()
+        VStack {
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack {
+                    ForEach(diceHistory.rollHistory.reversed()) {
+                        Text($0.display)
+                            .font(.title)
+                            .padding(.horizontal)
+                    }
+                }
             }
-        } else {
-            LazyHGrid(
-                rows: rows,
-                alignment: .center,
-                spacing: 16
-            ) {
-                RandomElementGroupView()
+            if verticalOrientation {
+                LazyVGrid(
+                    columns: sizing,
+                    alignment: .center,
+                    spacing: 16
+                ) {
+                    RandomElementGroupView()
+                }
+            } else {
+                LazyHGrid(
+                    rows: sizing,
+                    alignment: .center,
+                    spacing: 16
+                ) {
+                    RandomElementGroupView()
+                }
             }
         }
-        
+        .environmentObject(diceHistory)
     }
 }
 
