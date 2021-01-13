@@ -19,22 +19,27 @@ struct PresentedLifeView: View {
     @State private var changeOffset: CGFloat = 10
     
     var body: some View {
-        VStack {
-            if changeLife != 0 {
-                Text("\(changeLife, specifier: "%+d")")
-                    .foregroundColor(changeColor)
-                    .font(.system(size: 32))
-                    .opacity(changeOpacity)
-                    .offset(x: 0, y: changeOffset)
+        VerticalCenterAnchor {
+            VStack {
+                if changeLife != 0 {
+                    Text("\(changeLife, specifier: "%+d")")
+                        .foregroundColor(changeColor)
+                        .font(.system(size: 32))
+                        .opacity(changeOpacity)
+                        .offset(x: 0, y: changeOffset)
+                }
+                
+                Text("\(currentLife)")
+                    .font(.system(size: 48))
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.5)
+                    .alignmentGuide(.hCenter) { dimension in
+                        dimension.height / 2
+                    }
+                
+                Text("Life")
+                    .font(.system(size: 16))
             }
-            
-            Text("\(currentLife)")
-                .font(.system(size: 48))
-                .lineLimit(1)
-                .minimumScaleFactor(0.5)
-            
-            Text("Life")
-                .font(.system(size: 16))
         }
         .onChange(of: changeLife) { _ in
             changeOpacity = 0
@@ -52,7 +57,7 @@ struct PresentedLifeView: View {
 struct PresentedLifeView_Previews: PreviewProvider {
     static var previews: some View {
         PresentedLifeView(
-            changeLife: 20,
+            changeLife: 1,
             currentLife: 20,
             horizontal: true
         )

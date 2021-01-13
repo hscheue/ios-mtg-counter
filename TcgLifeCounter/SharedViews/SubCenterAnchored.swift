@@ -41,3 +41,37 @@ struct SubCenterAnchored<Content>: View where Content : View {
         }
     }
 }
+
+extension VerticalAlignment {
+    enum HCenter: AlignmentID {
+        static func defaultValue(in context: ViewDimensions) -> CGFloat {
+            context[VerticalAlignment.center]
+        }
+    }
+    static let hCenter = VerticalAlignment(HCenter.self)
+}
+
+struct VerticalCenterAnchor<Content>: View where Content : View {
+    var content: () -> Content
+    
+    init(@ViewBuilder content: @escaping () -> Content) {
+        self.content = content
+    }
+
+    var body: some View {
+        HStack(alignment: .hCenter) {
+            Spacer()
+                .layoutPriority(-1)
+            
+            VStack {
+                content()
+            }
+            
+            GeometryReader { geo in
+                EmptyView()
+                    .alignmentGuide(.hCenter) { d in d.height / 2 }
+            }
+            .layoutPriority(-1)
+        }
+    }
+}
