@@ -53,7 +53,7 @@ struct ThreePlayerLayoutView: View {
                         width: geo.size.width * (!isLandscape ? 0.66 : 1),
                         height: geo.size.height * (isLandscape ? 0.66 : 1)
                     )
-                    PlayerCardView(player: players[2], horizontal: false)
+                    PlayerCardView(player: players[2], horizontal: isLandscape)
                         .rotationEffect(!isLandscape ? .degrees(180) : .zero)
                 }
             }
