@@ -8,38 +8,6 @@
 import SwiftUI
 import Combine
 
-struct HalfRoundedRect: Shape {
-    enum Side {
-        case top, right, bottom, left
-        
-        var corners: UIRectCorner {
-            switch self {
-            case .top:
-                return [.topLeft, .topRight]
-            case .right:
-                return [.topRight, .bottomRight]
-            case .bottom:
-                return [.bottomRight, .bottomLeft]
-            case .left:
-                return [.bottomLeft, .topLeft]
-            }
-        }
-    }
-    
-    init(_ side: Side) {
-        self.side = side
-    }
-    
-    let side: Side
-    
-    func path(in rect: CGRect) -> Path {
-        Path(UIBezierPath(
-                roundedRect: rect,
-                byRoundingCorners: side.corners,
-                cornerRadii: CGSize(width: 43, height: 43)).cgPath)
-    }
-}
-
 class ClickState: ObservableObject {
     var cancellable: AnyCancellable?
     
@@ -53,25 +21,16 @@ class ClickState: ObservableObject {
 }
 
 struct PlayerCardView: View {
+    // MARK: Initialized
     @Environment(\.colorScheme) var colorScheme
+    @StateObject private var clickState = ClickState()
+    
+    // MARK: Constructed
     @ObservedObject var player: Player
     var horizontal = true
     
-    @StateObject private var clickState = ClickState()
-    
-    func adjustLifeByTap(by adjustment: Int) {
-        player.life += adjustment
-        withAnimation { clickState.value += adjustment }
-    }
-    
+    // MARK: View Body
     var body: some View {
-        let fillColor = colorScheme == .light
-            ? Color.white : Color.black
-        
-        let shadowColor = colorScheme == .light
-            ? Color.gray.opacity(0.4)
-            : Color.black
-        
         ZStack {
             Rectangle().fill(fillColor)
             
@@ -97,6 +56,20 @@ struct PlayerCardView: View {
         .clipShape(RoundedRectangle(cornerRadius: 42.0, style: .continuous))
         .shadow(color: shadowColor, radius: 7, x: 2.0, y: 2.0)
         .padding(4)
+    }
+    
+    // MARK: Computed
+    var fillColor: Color {
+        colorScheme == .light ? Color.white : Color.black
+    }
+    var shadowColor: Color {
+        colorScheme == .light ? Color.gray.opacity(0.4) : Color.black
+    }
+    
+    // MARK: Functions
+    func adjustLifeByTap(by adjustment: Int) {
+        player.life += adjustment
+        withAnimation { clickState.value += adjustment }
     }
 }
 
