@@ -45,6 +45,8 @@ struct CommitChangeStateView: View {
                     Text("\(prev.value)")
                         .font(.system(size: 32))
                         .foregroundColor(.gray)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.5)
                         .matchedGeometryEffect(id: prev.id, in: lifetotal)
                 }
                 VStack {
@@ -59,6 +61,8 @@ struct CommitChangeStateView: View {
                             .font(.system(size: 32))
                             .opacity(changeOpacity)
                             .offset(x: 0, y: changeOffset)
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.5)
                     }
                     
                     
