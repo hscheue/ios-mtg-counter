@@ -8,25 +8,12 @@
 import SwiftUI
 import Combine
 
-class ClickState: ObservableObject {
-    var cancellable: AnyCancellable?
-    
-    @Published var value: Int = 0
-    
-    init() {
-        cancellable = $value
-            .debounce(for: .seconds(2), scheduler: RunLoop.main)
-            .sink { change in withAnimation { self.value = 0 } }
-    }
-}
-
 struct PlayerCardView: View {
     // MARK: Initialized
     @Environment(\.colorScheme) var colorScheme
-    @StateObject private var clickState = ClickState()
     
     // MARK: Constructed
-    @ObservedObject var player: Player
+    @ObservedObject var player: PlayerState
     var horizontal = true
     
     // MARK: View Body
@@ -54,9 +41,8 @@ struct PlayerCardView: View {
                 )
             }
             
-            PresentedLifeView(
-                changeLife: clickState.value,
-                currentLife: player.life,
+            CommitChangeStateView(
+                playerState: player,
                 horizontal: horizontal
             )
         }
@@ -95,13 +81,12 @@ struct PlayerCardView: View {
     
     // MARK: Functions
     func adjustLifeByTap(by adjustment: Int) {
-        player.life += adjustment
-        withAnimation { clickState.value += adjustment }
+        player.inc(by: adjustment)
     }
 }
 
 struct ButtonView: View {
-    @ObservedObject var player: Player
+    @ObservedObject var player: PlayerState
     let horizontal: Bool
     let clickAction: () -> Void
     
@@ -123,7 +108,7 @@ struct ButtonView: View {
         
         Button(action: handleClick) {
             ZStack(alignment: horizontal ? .bottomLeading: .topLeading) {
-                Text("Decrease life for player \(player.name)")
+                Text("Decrease life")
                     .hidden()
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(backgroundColor.opacity(opacity))
@@ -141,7 +126,7 @@ struct ButtonView: View {
 }
 
 struct ButtonAddView: View {
-    @ObservedObject var player: Player
+    @ObservedObject var player: PlayerState
     let horizontal: Bool
     let clickAction: () -> Void
     
@@ -163,7 +148,7 @@ struct ButtonAddView: View {
         
         Button(action: handleClick) {
             ZStack(alignment: horizontal ? .bottomTrailing : .bottomLeading) {
-                Text("Increase life for player \(player.name)")
+                Text("Increase life")
                     .hidden()
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(backgroundColor.opacity(opacity))
@@ -182,7 +167,7 @@ struct ButtonAddView: View {
 
 struct PlayerCardView_Previews: PreviewProvider {
     
-    static let players = (0..<2).map { _ in Player() }
+    static let players = (0..<2).map { _ in PlayerState() }
     
     static var previews: some View {
         PlayersLayoutView(
@@ -193,11 +178,11 @@ struct PlayerCardView_Previews: PreviewProvider {
             players: Array(players[..<2]),
             outwards: false
         ).preferredColorScheme(.dark)
-        PlayerCardView(player: Player(), horizontal: true)
+        PlayerCardView(player: PlayerState(), horizontal: true)
             .previewDisplayName("Horizontal Display")
-        PlayerCardView(player: Player(), horizontal: false)
+        PlayerCardView(player: PlayerState(), horizontal: false)
             .previewDisplayName("Vertical Display")
-        PlayerCardView(player: Player(), horizontal: true)
+        PlayerCardView(player: PlayerState(), horizontal: true)
             .preferredColorScheme(.dark)
             .previewDisplayName("Dark Mode")
     }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TwoPlayerLayoutView: View {
-    let players: [Player]
+    let players: [PlayerState]
     var outwards = false
     
     @Environment(\.verticalSizeClass) var verticalSizeClass
@@ -28,7 +28,7 @@ struct TwoPlayerLayoutView: View {
 }
 
 struct ThreePlayerLayoutView: View {
-    let players: [Player]
+    let players: [PlayerState]
     var outwards: Bool = false
     
     @Environment(\.verticalSizeClass) var verticalSizeClass
@@ -62,7 +62,7 @@ struct ThreePlayerLayoutView: View {
 }
 
 struct PlayersLayoutView: View {
-    let players: [Player]
+    let players: [PlayerState]
     var outwards: Bool = false
     
     var body: some View {
@@ -82,7 +82,7 @@ struct PlayersLayoutView: View {
 }
 
 struct PlayersLayoutView_Previews: PreviewProvider {
-    static let players = (0..<6).map { _ in Player() }
+    static let players = (0..<6).map { _ in PlayerState() }
     
     static var previews: some View {
         ForEach(2...6, id: \.self) { num in

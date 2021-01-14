@@ -78,20 +78,21 @@ struct Trailing: View {
 
 struct ContentView: View {
     @StateObject var settings = Setting()
-    @State var players = [Player]()
+    @State var players = [PlayerState]()
     @State var isPresentingRestartAlert = false
     
     func createPlayers(playerCount: Int) {
         players.removeAll()
         
         for _ in 0..<playerCount {
-            players.append(Player(life: settings.startingLife))
+            players.append(PlayerState(life: settings.startingLife))
         }
     }
     
     func resetPlayers() {
         for player in players {
-            player.life = settings.startingLife
+            player.history.removeAll()
+            player.history.append(IntWithId(value: settings.startingLife))
         }
     }
     
@@ -123,7 +124,7 @@ struct ContentView: View {
         // replace with onChange?
         .onReceive(settings.$playerCount, perform: createPlayers)
         .onReceive(settings.$startingLife) { lifeCount in
-            players.forEach { $0.life = lifeCount }
+            resetPlayers()
         }
     }
 }
