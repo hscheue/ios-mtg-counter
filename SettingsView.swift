@@ -107,6 +107,7 @@ struct SettingsView: View {
             }
             MyView()
             Toggle("Players facing outwards", isOn: $setting.playersFaceOutwards)
+            LeaveFeedbackSectionView()
         }
         .pickerStyle(SegmentedPickerStyle())
     }
@@ -121,5 +122,14 @@ struct SettingsView_Previews: PreviewProvider {
     }
 }
 
-
-
+struct LeaveFeedbackSectionView: View {
+    var body: some View {
+        Section(header: Text("Leave feedback")) {
+            Button(action: {
+                AppReviewController.openManualReview()
+            }, label: {
+                Label("Write a review in the App Store", systemImage: "star.leadinghalf.fill")
+            })
+        }
+    }
+}

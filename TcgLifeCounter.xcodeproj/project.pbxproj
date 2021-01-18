@@ -18,6 +18,7 @@
 		A76053D125942F7A00A0A6AC /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76053D025942F7A00A0A6AC /* Layout.swift */; };
 		A76053D6259549D500A0A6AC /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76053D5259549D500A0A6AC /* SettingsView.swift */; };
 		A76B18B82597E97400565C31 /* FiveSixPlayerLayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76B18B72597E97400565C31 /* FiveSixPlayerLayoutView.swift */; };
+		A788965A25B5B2D90063E1FB /* StoreKitTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = A788965925B5B2D90063E1FB /* StoreKitTesting.swift */; };
 		A78DC8FF25AFC4EC00A41933 /* NextPresentedLifeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78DC8FE25AFC4EC00A41933 /* NextPresentedLifeView.swift */; };
 		A78DC90225AFC54300A41933 /* Anchors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78DC90125AFC54300A41933 /* Anchors.swift */; };
 		A78DC90625AFC80000A41933 /* PlayerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78DC90525AFC80000A41933 /* PlayerState.swift */; };
@@ -48,6 +49,7 @@
 		A76053D025942F7A00A0A6AC /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		A76053D5259549D500A0A6AC /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = SOURCE_ROOT; };
 		A76B18B72597E97400565C31 /* FiveSixPlayerLayoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveSixPlayerLayoutView.swift; sourceTree = "<group>"; };
+		A788965925B5B2D90063E1FB /* StoreKitTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreKitTesting.swift; sourceTree = "<group>"; };
 		A78DC8FE25AFC4EC00A41933 /* NextPresentedLifeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextPresentedLifeView.swift; sourceTree = "<group>"; };
 		A78DC90125AFC54300A41933 /* Anchors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Anchors.swift; sourceTree = "<group>"; };
 		A78DC90525AFC80000A41933 /* PlayerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerState.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				A70511F52593F28D002D801F /* Assets.xcassets */,
 				A70511FA2593F28D002D801F /* Info.plist */,
 				A70511F72593F28D002D801F /* Preview Content */,
+				A788965925B5B2D90063E1FB /* StoreKitTesting.swift */,
 			);
 			path = TcgLifeCounter;
 			sourceTree = "<group>";
@@ -244,6 +247,7 @@
 				A70511F42593F28C002D801F /* ContentView.swift in Sources */,
 				A76053BA25942E2E00A0A6AC /* Game.swift in Sources */,
 				A78DC90225AFC54300A41933 /* Anchors.swift in Sources */,
+				A788965A25B5B2D90063E1FB /* StoreKitTesting.swift in Sources */,
 				A79F552325A53D1500522361 /* D20Shape.swift in Sources */,
 				A76053C325942E7900A0A6AC /* Setting.swift in Sources */,
 				A78DC90625AFC80000A41933 /* PlayerState.swift in Sources */,
