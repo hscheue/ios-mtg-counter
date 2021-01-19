@@ -20,7 +20,7 @@ class PlayerState: ObservableObject, Identifiable {
         lhs.id == rhs.id
     }
     
-    var starting = 20
+    let starting: Int
     private var cancellable = Set<AnyCancellable>()
     @Published var history = [IntWithId]([IntWithId(value: 20)])
     @Published var anyChange: Void = ()
@@ -77,7 +77,8 @@ class PlayerState: ObservableObject, Identifiable {
         }
     }
     
-    init() {
+    init(life: Int) {
+        self.starting = life
         $anyChange
             .debounce(for: 2.0, scheduler: RunLoop.main)
             .sink {
@@ -90,18 +91,9 @@ class PlayerState: ObservableObject, Identifiable {
             .store(in: &cancellable)
     }
     
-    init(life: Int) {
-        self.starting = life
-        
-        $anyChange
-            .debounce(for: 2.0, scheduler: RunLoop.main)
-            .sink {
-                if self.previous?.value == self.current?.value {
-                    self.revert()
-                } else {
-                    self.commit()
-                }
-            }
-            .store(in: &cancellable)
+    convenience init() {
+        self.init(life: 20)
     }
+    
+    
 }
