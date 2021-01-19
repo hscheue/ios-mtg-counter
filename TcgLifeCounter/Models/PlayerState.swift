@@ -80,6 +80,8 @@ class PlayerState: ObservableObject, Identifiable {
     init(_ index: Int, life: Int) {
         self.name = "Player \(index + 1)"
         self.starting = life
+        self.history = [IntWithId]([IntWithId(value: life)])
+        
         $anyChange
             .debounce(for: 2.0, scheduler: RunLoop.main)
             .sink {

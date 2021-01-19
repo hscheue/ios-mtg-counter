@@ -16,13 +16,18 @@ struct HistoryView: View {
                 VStack {
                     Spacer()
                         .frame(height: 24)
+                    
                     Text("\(player.name)")
+                    
                     ScrollView(.vertical) {
                         ForEach(player.history) { intWithId in
                             Text("\(intWithId.value)")
                                 .font(.system(size: 32))
+                                .minimumScaleFactor(0.1)
+                                .lineLimit(1)
                         }
                     }
+                    
                     Spacer()
                 }
             }
@@ -34,7 +39,11 @@ struct HistoryView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             HistoryView(players: [
-                PlayerState()
+                PlayerState(0, life: 100),
+                PlayerState(1, life: 100),
+                PlayerState(2, life: 100),
+                PlayerState(3, life: 100),
+
             ])
             Button(action: {}) {
                 Text("HI")
