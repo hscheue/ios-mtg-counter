@@ -27,7 +27,7 @@ struct NavigationBarModifier: ViewModifier {
     }
     
     func body(content: Content) -> some View {
-        ZStack{
+        ZStack {
             content
             VStack {
                 GeometryReader { geometry in
@@ -49,6 +49,7 @@ extension View {
 }
 
 struct Trailing: View {
+    let players: [PlayerState]
     let restartAction: () -> Void
     
     var body: some View {
@@ -59,10 +60,18 @@ struct Trailing: View {
             }
             
             NavigationLink(
-                destination: DieRollView().navigationBarColor(UIColor(named: "NavBackgroundColor"))
+                destination: DieRollView()
+                    .navigationBarColor(UIColor(named: "NavBackgroundColor"))
             ) {
                 Image(systemName: "die.face.5.fill")
                     .font(.system(size: 32))
+            }
+            
+            NavigationLink(
+                destination: HistoryView(players: players)
+                    .navigationBarColor(UIColor(named: "NavBackgroundColor"))
+            ) {
+                Image(systemName: "circle.fill")
             }
             
             NavigationLink(
@@ -107,7 +116,9 @@ struct ContentView: View {
             .ignoresSafeArea(edges: .bottom)
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(
-                trailing: Trailing(restartAction: { isPresentingRestartAlert = true })
+                trailing: Trailing(
+                    players: players,
+                    restartAction: { isPresentingRestartAlert = true })
             )
             .navigationBarColor(UIColor(named: "NavBackgroundColor"))
             .alert(isPresented: $isPresentingRestartAlert) {

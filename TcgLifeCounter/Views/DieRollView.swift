@@ -20,7 +20,7 @@ class DiceHistory: ObservableObject {
         rollHistory.append(DiceRoll(display: "\(value) / \(sides)"))
         if rollHistory.count > LIMIT {
             rollHistory.removeFirst(rollHistory.count - LIMIT)
-
+            
         }
     }
 }
@@ -28,7 +28,7 @@ class DiceHistory: ObservableObject {
 struct RandomElementView<S>: View where S : Shape  {
     @EnvironmentObject private var diceHistory: DiceHistory
     let bgSide: CGFloat = 100
-
+    
     let sides: Int
     let shape: S
     
@@ -128,7 +128,7 @@ struct DieRollView: View {
     }
     
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
                     ForEach(diceHistory.rollHistory.reversed()) {
@@ -139,20 +139,24 @@ struct DieRollView: View {
                 }
             }
             if verticalOrientation {
-                LazyVGrid(
-                    columns: sizing,
-                    alignment: .center,
-                    spacing: 16
-                ) {
-                    RandomElementGroupView()
+                ScrollView(.vertical) {
+                    LazyVGrid(
+                        columns: sizing,
+                        alignment: .center,
+                        spacing: 16
+                    ) {
+                        RandomElementGroupView()
+                    }
                 }
             } else {
-                LazyHGrid(
-                    rows: sizing,
-                    alignment: .center,
-                    spacing: 16
-                ) {
-                    RandomElementGroupView()
+                ScrollView(.horizontal) {
+                    LazyHGrid(
+                        rows: sizing,
+                        alignment: .center,
+                        spacing: 16
+                    ) {
+                        RandomElementGroupView()
+                    }
                 }
             }
         }

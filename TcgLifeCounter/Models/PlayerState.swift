@@ -15,7 +15,11 @@ struct IntWithId: Identifiable {
 
 // TODO: Backwards animation in matched geometry is preview only!
 // TODO: replace state with enums or ints for incrementing state instead
-class PlayerState: ObservableObject {
+class PlayerState: ObservableObject, Identifiable {
+    static func == (lhs: PlayerState, rhs: PlayerState) -> Bool {
+        lhs.id == rhs.id
+    }
+    
     var starting = 20
     private var cancellable = Set<AnyCancellable>()
     @Published var history = [IntWithId]([IntWithId(value: 20)])
