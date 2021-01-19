@@ -147,18 +147,37 @@ struct ButtonAddView: View {
             : Color.black
         
         Button(action: handleClick) {
-            ZStack(alignment: horizontal ? .bottomTrailing : .bottomLeading) {
-                Text("Increase life")
-                    .hidden()
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .background(backgroundColor.opacity(opacity))
-                
-                Text("+1")
-                    .offset(x: -30, y: -15)
-                    .rotationEffect(horizontal ? .zero : .degrees(90))
-                    .font(.system(size: 32))
-                    .foregroundColor(.gray)
-                    .allowsHitTesting(false)
+            ZStack {
+                ZStack(alignment: horizontal
+                        ? .topTrailing : .bottomTrailing) {
+                    Text(player.name)
+                        .offset(x: -30, y: 15)
+                        .rotationEffect(horizontal ? .zero : .degrees(90))
+                        .font(.system(size: 16))
+                        .foregroundColor(.gray)
+                        .allowsHitTesting(false)
+                    
+                    Text("Increase life")
+                        .hidden()
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .background(backgroundColor.opacity(opacity))
+                    
+                }
+                ZStack(alignment: horizontal
+                        ? .bottomTrailing : .bottomLeading) {
+                    
+                    Text("Increase life")
+                        .hidden()
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .background(backgroundColor.opacity(opacity))
+                    
+                    Text("+1")
+                        .offset(x: -30, y: -15)
+                        .rotationEffect(horizontal ? .zero : .degrees(90))
+                        .font(.system(size: 32))
+                        .foregroundColor(.gray)
+                        .allowsHitTesting(false)
+                }
             }
         }
         .contentShape(HalfRoundedRect(horizontal ? .right : .bottom))

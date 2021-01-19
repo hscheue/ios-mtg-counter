@@ -14,11 +14,16 @@ struct HistoryView: View {
         HStack {
             ForEach(players) { player in
                 VStack {
-                    Text("Player")
-                    ForEach(player.history) { intWithId in
-                        Text("\(intWithId.value)")
-                            .font(.system(size: 32))
+                    Spacer()
+                        .frame(height: 24)
+                    Text("\(player.name)")
+                    ScrollView(.vertical) {
+                        ForEach(player.history) { intWithId in
+                            Text("\(intWithId.value)")
+                                .font(.system(size: 32))
+                        }
                     }
+                    Spacer()
                 }
             }
         }

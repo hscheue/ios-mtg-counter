@@ -36,7 +36,8 @@ struct Trailing: View {
                 destination: HistoryView(players: players)
                     .navigationBarColor(UIColor(named: "NavBackgroundColor"))
             ) {
-                Image(systemName: "circle.fill")
+                Image(systemName: "clock.fill")
+                    .font(.system(size: 32))
             }
             
             NavigationLink(
@@ -58,8 +59,8 @@ struct ContentView: View {
     func createPlayers(playerCount: Int) {
         players.removeAll()
         
-        for _ in 0..<playerCount {
-            players.append(PlayerState(life: settings.startingLife))
+        for i in 0..<playerCount {
+            players.append(PlayerState(i, life: settings.startingLife))
         }
     }
     

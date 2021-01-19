@@ -19,7 +19,7 @@ class PlayerState: ObservableObject, Identifiable {
     static func == (lhs: PlayerState, rhs: PlayerState) -> Bool {
         lhs.id == rhs.id
     }
-    
+    let name: String
     let starting: Int
     private var cancellable = Set<AnyCancellable>()
     @Published var history = [IntWithId]([IntWithId(value: 20)])
@@ -77,7 +77,8 @@ class PlayerState: ObservableObject, Identifiable {
         }
     }
     
-    init(life: Int) {
+    init(_ index: Int, life: Int) {
+        self.name = "Player \(index + 1)"
         self.starting = life
         $anyChange
             .debounce(for: 2.0, scheduler: RunLoop.main)
@@ -92,8 +93,6 @@ class PlayerState: ObservableObject, Identifiable {
     }
     
     convenience init() {
-        self.init(life: 20)
+        self.init(Int.random(in: 0..<10), life: 20)
     }
-    
-    
 }
