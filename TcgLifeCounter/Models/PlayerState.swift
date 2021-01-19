@@ -64,7 +64,7 @@ class PlayerState: ObservableObject, Identifiable {
     }
     
     public func revert() {
-        guard history.count > 2 else {
+        guard history.count > 1 else {
             return
         }
         objectWillChange.send()
