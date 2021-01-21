@@ -41,38 +41,44 @@ struct AppReviewController {
         }
     }
     
-    static func handleMetricReached() {
+    static func getCurrentVersion() -> String? {
         let infoDictionaryKey = kCFBundleVersionKey as String
-        guard let currentVersion = Bundle.main.object(forInfoDictionaryKey: infoDictionaryKey) as? String
-            else { return }
-        
-        let lastVersionPromptedForReview = UserDefaults.standard.string(forKey: UserDefaultsKeys.lastVersionPromptedForReviewKey)
-        
-        if currentVersion != lastVersionPromptedForReview {
-            
-            var count = UserDefaults.standard.integer(forKey: UserDefaultsKeys.processCompletedCountKey)
-            count += 1
-            UserDefaults.standard.set(count, forKey: UserDefaultsKeys.processCompletedCountKey)
-            
-            if (count >= 4) {
-                triggerManualReview()
-            }
-            
-        }
+        let currentVersion = Bundle.main.object(forInfoDictionaryKey: infoDictionaryKey) as? String
+        assert(currentVersion != nil)
+        return currentVersion
     }
+    
+    static func hasNotPromptedForCurrentVersion() -> Bool {
+        guard let currentVersion = getCurrentVersion() else { return false }
+        let lastVersionPromptedForReview = UserDefaults.standard.string(forKey: UserDefaultsKeys.lastVersionPromptedForReviewKey)
+        return currentVersion != lastVersionPromptedForReview
+    }
+    
+    static func incrementHasReachedMetric() -> Bool {
+        var count = UserDefaults.standard.integer(forKey: UserDefaultsKeys.processCompletedCountKey)
+        count += 1
+        UserDefaults.standard.set(count, forKey: UserDefaultsKeys.processCompletedCountKey)
+        return count >= 4
+    }
+    
+    static func handleMetricReached() {
+        guard hasNotPromptedForCurrentVersion() else { return }
+        guard incrementHasReachedMetric() else { return }
+        triggerManualReview()
+        updateReviewUserDefaults()
+    }
+    
     static func triggerManualReview() {
         // TODO: Add a game timer, Game time + PlayerState length total + version and count checks = prompt
         // https://developer.apple.com/documentation/storekit/skstorereviewcontroller/requesting_app_store_reviews
-        let infoDictionaryKey = kCFBundleVersionKey as String
-        guard let currentVersion = Bundle.main.object(forInfoDictionaryKey: infoDictionaryKey) as? String
-            else { return }
-        
         if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
             SKStoreReviewController.requestReview(in: scene)
         }
-        
+    }
+    
+    static func updateReviewUserDefaults() {
+        guard let currentVersion = getCurrentVersion() else { return }
         UserDefaults.standard.set(currentVersion, forKey: UserDefaultsKeys.lastVersionPromptedForReviewKey)
         UserDefaults.standard.set(0, forKey: UserDefaultsKeys.processCompletedCountKey)
-
     }
 }
