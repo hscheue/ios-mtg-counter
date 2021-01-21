@@ -20,12 +20,10 @@ struct AppReviewController {
     static func openManualReview() { UIApplication.shared.open(appstoreReview) }
     
 //    static func triggerManualReview() {
-//        // TODO:
-//        // https://developer.apple.com/documentation/storekit/skstorereviewcontroller/requesting_app_store_reviews
+//        // TODO: Add a game timer, Game time + PlayerState length total + version and count checks = prompt
 //        // https://developer.apple.com/documentation/storekit/skstorereviewcontroller/requesting_app_store_reviews
 //        if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
 //            SKStoreReviewController.requestReview(in: scene)
 //        }
 //    }
 }
-
