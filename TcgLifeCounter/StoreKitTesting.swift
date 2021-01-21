@@ -36,7 +36,7 @@ struct AppReviewController {
         let count = playerStates.reduce(into: 0) { result, playerState in
             result += playerState.history.count
         }
-        if (count / playerStates.count > 10) {
+        if (playerStates.count > 0 && (count / playerStates.count) > 10) {
             handleMetricReached()
         }
     }

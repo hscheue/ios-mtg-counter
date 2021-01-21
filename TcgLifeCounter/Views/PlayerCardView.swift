@@ -151,8 +151,9 @@ struct ButtonAddView: View {
                 ZStack(alignment: horizontal
                         ? .topTrailing : .bottomTrailing) {
                     Text(player.name)
-                        .offset(x: -30, y: 15)
-                        .rotationEffect(horizontal ? .zero : .degrees(90))
+                        .offset(x: -15, y: 15)
+                        .rotationEffect(horizontal ? .zero : .degrees(90), anchor: UnitPoint(x: 1, y: 1))
+                        .offset(x: !horizontal ? -15: 0)
                         .font(.system(size: 16))
                         .foregroundColor(.gray)
                         .allowsHitTesting(false)
