@@ -65,6 +65,8 @@ struct ContentView: View {
     }
     
     func resetPlayers() {
+        AppReviewController.playerStateActivityMetricReached(playerStates: players);
+        
         for player in players {
             player.history.removeAll()
             player.history.append(IntWithId(value: settings.startingLife))
