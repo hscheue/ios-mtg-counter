@@ -32,6 +32,7 @@
 		A79F552325A53D1500522361 /* D20Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79F552225A53D1500522361 /* D20Shape.swift */; };
 		A79F552625A5414800522361 /* D100.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79F552525A5414800522361 /* D100.swift */; };
 		A79F552C25A66BAD00522361 /* HVStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79F552B25A66BAD00522361 /* HVStack.swift */; };
+		A7B775A225BB7B9800E3FDDF /* DebounceSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B775A125BB7B9800E3FDDF /* DebounceSettingView.swift */; };
 		A7CECA33259FB9A900B783C5 /* DieRollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CECA32259FB9A900B783C5 /* DieRollView.swift */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,7 @@
 		A79F552225A53D1500522361 /* D20Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D20Shape.swift; sourceTree = "<group>"; };
 		A79F552525A5414800522361 /* D100.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D100.swift; sourceTree = "<group>"; };
 		A79F552B25A66BAD00522361 /* HVStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HVStack.swift; sourceTree = "<group>"; };
+		A7B775A125BB7B9800E3FDDF /* DebounceSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebounceSettingView.swift; sourceTree = "<group>"; };
 		A7CECA32259FB9A900B783C5 /* DieRollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DieRollView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -130,6 +132,7 @@
 		A76053BF25942E4C00A0A6AC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A7B775A025BB7B8500E3FDDF /* Settings */,
 				A7F3F00425AF82CD00229BE6 /* PlayerCard */,
 				A76053C625942F3B00A0A6AC /* PlayerCardView.swift */,
 				A76053D5259549D500A0A6AC /* SettingsView.swift */,
@@ -173,6 +176,14 @@
 				A78DC90125AFC54300A41933 /* Anchors.swift */,
 			);
 			path = SharedViews;
+			sourceTree = "<group>";
+		};
+		A7B775A025BB7B8500E3FDDF /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				A7B775A125BB7B9800E3FDDF /* DebounceSettingView.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		A7F3F00425AF82CD00229BE6 /* PlayerCard */ = {
@@ -258,6 +269,7 @@
 				A79F552325A53D1500522361 /* D20Shape.swift in Sources */,
 				A76053C325942E7900A0A6AC /* Setting.swift in Sources */,
 				A78DC90625AFC80000A41933 /* PlayerState.swift in Sources */,
+				A7B775A225BB7B9800E3FDDF /* DebounceSettingView.swift in Sources */,
 				A714C43625B5DCAF00145001 /* HistoryView.swift in Sources */,
 				A79F552025A52FAE00522361 /* D12Shape.swift in Sources */,
 				A79F550F25A5165F00522361 /* D2Shape.swift in Sources */,

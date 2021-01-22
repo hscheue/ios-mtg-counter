@@ -95,7 +95,8 @@ class PlayerState: ObservableObject, Identifiable {
         }
         
         $anyChange
-            .debounce(for: 2.0, scheduler: RunLoop.main)
+            .combineLatest(self.$debounceCount) { _,_ in () }
+            .debounce(for: .seconds(self.debounceCount), scheduler: RunLoop.main)
             .sink {
                 if self.previous?.value == self.current?.value {
                     self.revert()

@@ -54,7 +54,7 @@ class Setting: ObservableObject, Codable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         startingLife = try container.decode(Int.self, forKey: .startingLife)
         playerCount = try container.decode(Int.self, forKey: .playerCount)
-        customValue = (try? container.decode(Int.self, forKey: .customValue)) ?? 30
+        customValue = (try? container.decode(Int.self, forKey: .customValue)) ?? 20
         playersFaceOutwards = (try? container.decode(Bool.self, forKey: .playersFaceOutwards)) ?? false
     }
 }
