@@ -17,7 +17,6 @@ struct HistoryView: View {
                     Text(player.name)
                         .font(.system(size: 26))
                         .lineLimit(1)
-                        .minimumScaleFactor(0.1)
                         .frame(maxWidth: .infinity)
                 }
             }
