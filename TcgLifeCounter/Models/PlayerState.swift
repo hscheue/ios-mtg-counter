@@ -77,25 +77,12 @@ class PlayerState: ObservableObject, Identifiable {
         }
     }
     
-    init(_ index: Int, life: Int) {
-        self.name = "Player \(index + 1)"
-        self.starting = life
-        self.history = [IntWithId]([IntWithId(value: life)])
-        
-        $anyChange
-            .debounce(for: 2.0, scheduler: RunLoop.main)
-            .sink {
-                if self.previous?.value == self.current?.value {
-                    self.revert()
-                } else {
-                    self.commit()
-                }
-            }
-            .store(in: &cancellable)
+    convenience init(_ index: Int, life: Int) {
+        self.init(index, life: life, history: [life])
     }
     
     convenience init() {
-        self.init(Int.random(in: 0..<10), life: 20)
+        self.init(Int.random(in: 0..<10), life: 20, history: [20])
     }
     
     init(_ index: Int, life: Int, history: [Int]) {
