@@ -71,8 +71,8 @@ struct HistoryView: View {
 struct HistoryView_Previews: PreviewProvider {
     static var previews: some View {
         HistoryView(players: [
-            PlayerState(0, life: 100, history: [99,88,77,66,55,44,33,22,11,9,8,7,6,5,4,4,3,2,1]),
-            PlayerState(1, life: 100, history: [99,88,77,66,55,44,33,22,11]),
+            PlayerState(0, life: 100, history: [99,88,77,66,55,44,33,22,11,9,8,7,6,5,4,4,3,2,1], debounce: 2.0),
+            PlayerState(1, life: 100, history: [99,88,77,66,55,44,33,22,11], debounce: 2.0),
 //            PlayerState(2, life: 100, history: [99,88,77]),
 //            PlayerState(3, life: 100),
 //            PlayerState(4, life: 100),
@@ -80,10 +80,10 @@ struct HistoryView_Previews: PreviewProvider {
         ])
         
         HistoryView(players: [
-            PlayerState(0, life: 100, history: [99,88,77,66,55,44,33,22,11,9,8,7,6,5,4,4,3,2,1]),
-            PlayerState(1, life: 100, history: [99,88,77,66,55,44,33,22,11]),
-            PlayerState(2, life: 100, history: [99,88,77]),
-            PlayerState(3, life: 100),
+            PlayerState(0, life: 100, history: [99,88,77,66,55,44,33,22,11,9,8,7,6,5,4,4,3,2,1], debounce: 2.0),
+            PlayerState(1, life: 100, history: [99,88,77,66,55,44,33,22,11], debounce: 2.0),
+            PlayerState(2, life: 100, history: [99,88,77], debounce: 2.0),
+            PlayerState(3, life: 100, debounce: 2.0),
         ])
         .preferredColorScheme(.dark)
     }

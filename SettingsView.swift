@@ -107,6 +107,7 @@ struct SettingsView: View {
             }
             MyView()
             Toggle("Players facing outwards", isOn: $setting.playersFaceOutwards)
+            DebounceSettingView()
             LeaveFeedbackSectionView()
         }
         .pickerStyle(SegmentedPickerStyle())

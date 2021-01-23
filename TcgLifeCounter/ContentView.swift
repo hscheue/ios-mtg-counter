@@ -60,7 +60,7 @@ struct ContentView: View {
         players.removeAll()
         
         for i in 0..<playerCount {
-            players.append(PlayerState(i, life: settings.startingLife))
+            players.append(PlayerState(i, life: settings.startingLife, debounce: settings.debounceValue))
         }
     }
     
@@ -105,6 +105,11 @@ struct ContentView: View {
         .onReceive(settings.$startingLife) { lifeCount in
             resetPlayers()
         }
+        .onReceive(settings.$debounceValue, perform: { debounceValue in
+            players.forEach { player in
+                player.debounceTime = debounceValue
+            }
+        })
     }
 }
 

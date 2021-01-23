@@ -24,6 +24,7 @@ class PlayerState: ObservableObject, Identifiable {
     private var cancellable = Set<AnyCancellable>()
     @Published var history = [IntWithId]([IntWithId(value: 20)])
     @Published var anyChange: Void = ()
+    @Published var debounceTime: Double
     var isChanging = false
     var changeAnimated = true
     
@@ -77,25 +78,33 @@ class PlayerState: ObservableObject, Identifiable {
         }
     }
     
-    convenience init(_ index: Int, life: Int) {
-        self.init(index, life: life, history: [life])
+    convenience init(_ index: Int, life: Int, debounce: Double) {
+        self.init(index, life: life, history: [life], debounce: debounce)
     }
     
     convenience init() {
-        self.init(Int.random(in: 0..<10), life: 20, history: [20])
+        self.init(Int.random(in: 0..<10), life: 20, history: [20], debounce: 2.0)
     }
     
-    init(_ index: Int, life: Int, history: [Int]) {
+    init(_ index: Int, life: Int, history: [Int], debounce: Double) {
         self.name = "Player \(index + 1)"
         self.starting = life
         self.history = [IntWithId]([IntWithId(value: life)])
+        self.debounceTime = debounce
         
         for h in history {
             self.history.append(IntWithId(value: h))
         }
         
-        $anyChange
-            .debounce(for: .seconds(2), scheduler: RunLoop.main)
+        $debounceTime
+            .map { time in
+                Publishers.Debounce(
+                    upstream: self.$anyChange,
+                    dueTime: .seconds(time),
+                    scheduler: RunLoop.main,
+                    options: nil)
+            }
+            .switchToLatest()
             .sink {
                 if self.previous?.value == self.current?.value {
                     self.revert()
@@ -104,5 +113,6 @@ class PlayerState: ObservableObject, Identifiable {
                 }
             }
             .store(in: &cancellable)
+
     }
 }
