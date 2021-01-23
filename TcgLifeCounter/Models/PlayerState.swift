@@ -22,7 +22,7 @@ class PlayerState: ObservableObject, Identifiable {
     let name: String
     let starting: Int
     private var cancellable = Set<AnyCancellable>()
-    @Published var history = [IntWithId]([IntWithId(value: 20)])
+    @Published var history: [IntWithId]
     @Published var anyChange: Void = ()
     @Published var debounceTime: Double
     var isChanging = false

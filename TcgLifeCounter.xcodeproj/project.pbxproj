@@ -34,6 +34,7 @@
 		A79F552C25A66BAD00522361 /* HVStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79F552B25A66BAD00522361 /* HVStack.swift */; };
 		A7B775A225BB7B9800E3FDDF /* DebounceSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B775A125BB7B9800E3FDDF /* DebounceSettingView.swift */; };
 		A7CECA33259FB9A900B783C5 /* DieRollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CECA32259FB9A900B783C5 /* DieRollView.swift */; };
+		A7F3EE7C25BC8CDD008ACB2F /* TrailingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F3EE7B25BC8CDD008ACB2F /* TrailingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		A79F552B25A66BAD00522361 /* HVStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HVStack.swift; sourceTree = "<group>"; };
 		A7B775A125BB7B9800E3FDDF /* DebounceSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebounceSettingView.swift; sourceTree = "<group>"; };
 		A7CECA32259FB9A900B783C5 /* DieRollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DieRollView.swift; sourceTree = "<group>"; };
+		A7F3EE7B25BC8CDD008ACB2F /* TrailingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,10 +107,10 @@
 				A76053BF25942E4C00A0A6AC /* Views */,
 				A70511F12593F28C002D801F /* TcgLifeCounterApp.swift */,
 				A70511F32593F28C002D801F /* ContentView.swift */,
+				A788965925B5B2D90063E1FB /* StoreKitTesting.swift */,
 				A70511F52593F28D002D801F /* Assets.xcassets */,
 				A70511FA2593F28D002D801F /* Info.plist */,
 				A70511F72593F28D002D801F /* Preview Content */,
-				A788965925B5B2D90063E1FB /* StoreKitTesting.swift */,
 			);
 			path = TcgLifeCounter;
 			sourceTree = "<group>";
@@ -132,6 +134,7 @@
 		A76053BF25942E4C00A0A6AC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A7F3EE7A25BC8C28008ACB2F /* Navigation */,
 				A7F3F00425AF82CD00229BE6 /* PlayerCard */,
 				A76053C625942F3B00A0A6AC /* PlayerCardView.swift */,
 				A7B775A025BB7B8500E3FDDF /* Settings */,
@@ -184,6 +187,14 @@
 				A7B775A125BB7B9800E3FDDF /* DebounceSettingView.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		A7F3EE7A25BC8C28008ACB2F /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				A7F3EE7B25BC8CDD008ACB2F /* TrailingView.swift */,
+			);
+			path = Navigation;
 			sourceTree = "<group>";
 		};
 		A7F3F00425AF82CD00229BE6 /* PlayerCard */ = {
@@ -267,6 +278,7 @@
 				A78DC90225AFC54300A41933 /* Anchors.swift in Sources */,
 				A788965A25B5B2D90063E1FB /* StoreKitTesting.swift in Sources */,
 				A79F552325A53D1500522361 /* D20Shape.swift in Sources */,
+				A7F3EE7C25BC8CDD008ACB2F /* TrailingView.swift in Sources */,
 				A76053C325942E7900A0A6AC /* Setting.swift in Sources */,
 				A78DC90625AFC80000A41933 /* PlayerState.swift in Sources */,
 				A7B775A225BB7B9800E3FDDF /* DebounceSettingView.swift in Sources */,
@@ -416,7 +428,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_ASSET_PATHS = "\"TcgLifeCounter/Preview Content\"";
 				DEVELOPMENT_TEAM = A2TVHL278P;
 				ENABLE_PREVIEWS = YES;
@@ -440,7 +452,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_ASSET_PATHS = "\"TcgLifeCounter/Preview Content\"";
 				DEVELOPMENT_TEAM = A2TVHL278P;
 				ENABLE_PREVIEWS = YES;
