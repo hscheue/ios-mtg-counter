@@ -25,7 +25,7 @@ struct ReaderView: View {
 
 struct PlayerNamesRowView: View {
     let players: [PlayerState]
-
+    
     var body: some View {
         HStack(alignment: .top) {
             ForEach(players) { player in
@@ -44,12 +44,12 @@ struct PlayerLifeColumnView: View {
     let b: CGFloat
     @State var a: CGFloat = 0
     var offset: CGFloat { max(b-a, 0) }
-
+    
     var body: some View {
         VStack(alignment: .leading) {
             ForEach(Array(zip(player.history.indices, player.history)), id: \.0) { index, intWithId in
                 if player.history.last?.id != intWithId.id {
-                    
+
                     HStack(alignment: .lastTextBaseline, spacing: 0) {
                         Text("\(intWithId.value)")
                             .font(.system(size: 32))

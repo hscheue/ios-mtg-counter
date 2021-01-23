@@ -102,5 +102,6 @@ struct CommitChangeStateView: View {
         }
         .rotationEffect(horizontal ? .zero : .degrees(90))
         .allowsHitTesting(false)
+        .fixedSize()
     }
 }

@@ -67,7 +67,7 @@ struct FiveSixPlayerLayoutView: View {
 }
 
 struct FivePlayerLayoutView_Previews: PreviewProvider {
-    static let players = (0..<6).map { _ in PlayerState() }
+    static let players = (0..<6).map { i in PlayerState(i, life: 100 / (i + 1), debounce: 2.0) }
     static var previews: some View {
         FiveSixPlayerLayoutView(players: Array(players[..<5]))
         FiveSixPlayerLayoutView(players: Array(players[..<5]), outwards: true)
