@@ -8,20 +8,14 @@
 import SwiftUI
 
 struct DebounceSettingView {
-    let values = [0.25, 0.5, 1.0, 2.0, 5.0, 10.0];
+    let values: [Double] = [2, 3, 5, 7, 9, 12, 15];
     let title = "Debounce Timer"
     let description = "Each time you change a players life total, this value is the amount of seconds the app waits until storing it in history."
     
-    var selection: Binding<Int> {
-        .init(
-            get: {
-                values.firstIndex(of: setting.debounceValue) ?? 0
-            },
-            set: {
-                setting.debounceValue = values[$0]
-            }
-        )
-    }
+    var selection: Binding<Int> { .init(
+            get: { values.firstIndex(of: setting.debounceValue) ?? 0 },
+            set: { setting.debounceValue = values[$0] }
+    )}
     @State var showingInfoDialog = false
     @EnvironmentObject var setting: Setting
 }
