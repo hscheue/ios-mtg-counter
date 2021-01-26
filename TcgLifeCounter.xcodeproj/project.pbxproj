@@ -49,7 +49,7 @@
 		A76053C225942E7900A0A6AC /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		A76053C625942F3B00A0A6AC /* PlayerCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCardView.swift; sourceTree = "<group>"; };
 		A76053CD25942F6000A0A6AC /* PlayersLayoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersLayoutView.swift; sourceTree = "<group>"; };
-		A76053D5259549D500A0A6AC /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = SOURCE_ROOT; };
+		A76053D5259549D500A0A6AC /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsView.swift; path = TcgLifeCounter/Views/SettingsView.swift; sourceTree = SOURCE_ROOT; };
 		A76B18B72597E97400565C31 /* FiveSixPlayerLayoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveSixPlayerLayoutView.swift; sourceTree = "<group>"; };
 		A788965925B5B2D90063E1FB /* StoreKitTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreKitTesting.swift; sourceTree = "<group>"; };
 		A78DC8FE25AFC4EC00A41933 /* NextPresentedLifeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextPresentedLifeView.swift; sourceTree = "<group>"; };
