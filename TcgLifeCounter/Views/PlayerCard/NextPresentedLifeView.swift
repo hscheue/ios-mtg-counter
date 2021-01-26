@@ -91,6 +91,7 @@ struct CommitChangeStateView: View {
                     }
                 }
             }
+            .layoutPriority(-1)
         }
         .onChange(of: diff) { _ in
             changeOpacity = 0
