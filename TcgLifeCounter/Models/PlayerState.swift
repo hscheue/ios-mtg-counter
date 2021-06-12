@@ -78,23 +78,15 @@ class PlayerState: ObservableObject, Identifiable {
         }
     }
     
-    convenience init(_ index: Int, life: Int, debounce: Double) {
-        self.init(index, life: life, history: [life], debounce: debounce)
-    }
-    
     convenience init() {
-        self.init(Int.random(in: 0..<10), life: 20, history: [20], debounce: 2.0)
+        self.init(Int.random(in: 0..<10), life: 20, debounce: 2.0)
     }
     
-    init(_ index: Int, life: Int, history: [Int], debounce: Double) {
+    init(_ index: Int, life: Int, debounce: Double) {
         self.name = "Player \(index + 1)"
         self.starting = life
         self.history = [IntWithId]([IntWithId(value: life)])
         self.debounceTime = debounce
-        
-        for h in history {
-            self.history.append(IntWithId(value: h))
-        }
         
         $debounceTime
             .map { time in

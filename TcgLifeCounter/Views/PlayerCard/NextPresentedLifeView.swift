@@ -36,7 +36,7 @@ struct CommitChangeStateView: View {
     
     var body: some View {
         func testView() -> some View {
-            HStack(alignment: .lastTextBaseline) {
+            return HStack(alignment: .lastTextBaseline) {
                 if let prev = playerState.previous {
                     Text("\(prev.value)")
                         .font(.system(size: 32))
