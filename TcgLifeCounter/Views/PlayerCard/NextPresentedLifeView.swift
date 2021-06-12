@@ -20,10 +20,6 @@ struct CommitChangeStateView: View {
     
     @Namespace var lifetotal
     
-    
-    @State private var changeOpacity: Double = 0
-    @State private var changeOffset: CGFloat = 10
-    
     var diff: Int? {
         if let curr = playerState.current?.value {
             let prev = playerState.previous?.value
@@ -59,10 +55,9 @@ struct CommitChangeStateView: View {
                         Text("\(diff, specifier: "%+d")")
                             .foregroundColor(changeColor)
                             .font(.system(size: 32))
-                            .opacity(changeOpacity)
-                            .offset(x: 0, y: changeOffset)
                             .lineLimit(1)
                             .minimumScaleFactor(0.5)
+                            .transition(.opacity)
                     }
                     
                     
@@ -92,14 +87,6 @@ struct CommitChangeStateView: View {
                 }
             }
             .layoutPriority(-1)
-        }
-        .onChange(of: diff) { _ in
-            changeOpacity = 0
-            changeOffset = 10
-            withAnimation {
-                changeOpacity = 1
-                changeOffset = 0
-            }
         }
         .rotationEffect(horizontal ? .zero : .degrees(90))
         .allowsHitTesting(false)
