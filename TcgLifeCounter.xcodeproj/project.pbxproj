@@ -22,6 +22,7 @@
 		A78DC8FF25AFC4EC00A41933 /* NextPresentedLifeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78DC8FE25AFC4EC00A41933 /* NextPresentedLifeView.swift */; };
 		A78DC90225AFC54300A41933 /* Anchors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78DC90125AFC54300A41933 /* Anchors.swift */; };
 		A78DC90625AFC80000A41933 /* PlayerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78DC90525AFC80000A41933 /* PlayerState.swift */; };
+		A79E517B267FC9A900626827 /* TEST_EntryCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79E517A267FC9A900626827 /* TEST_EntryCounter.swift */; };
 		A79EFFDB25AE8B4400E36B64 /* HalfRoundedRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79EFFDA25AE8B4400E36B64 /* HalfRoundedRect.swift */; };
 		A79F550F25A5165F00522361 /* D2Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79F550E25A5165F00522361 /* D2Shape.swift */; };
 		A79F551325A5194400522361 /* D4Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79F551225A5194400522361 /* D4Shape.swift */; };
@@ -55,6 +56,7 @@
 		A78DC8FE25AFC4EC00A41933 /* NextPresentedLifeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextPresentedLifeView.swift; sourceTree = "<group>"; };
 		A78DC90125AFC54300A41933 /* Anchors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Anchors.swift; sourceTree = "<group>"; };
 		A78DC90525AFC80000A41933 /* PlayerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerState.swift; sourceTree = "<group>"; };
+		A79E517A267FC9A900626827 /* TEST_EntryCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TEST_EntryCounter.swift; sourceTree = "<group>"; };
 		A79EFFDA25AE8B4400E36B64 /* HalfRoundedRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfRoundedRect.swift; sourceTree = "<group>"; };
 		A79F550E25A5165F00522361 /* D2Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D2Shape.swift; sourceTree = "<group>"; };
 		A79F551225A5194400522361 /* D4Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4Shape.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 		A70511F72593F28D002D801F /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				A79E517A267FC9A900626827 /* TEST_EntryCounter.swift */,
 				A70511F82593F28D002D801F /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
@@ -290,6 +293,7 @@
 				A79F552C25A66BAD00522361 /* HVStack.swift in Sources */,
 				A7CECA33259FB9A900B783C5 /* DieRollView.swift in Sources */,
 				A76053D6259549D500A0A6AC /* SettingsView.swift in Sources */,
+				A79E517B267FC9A900626827 /* TEST_EntryCounter.swift in Sources */,
 				A76053CE25942F6000A0A6AC /* PlayersLayoutView.swift in Sources */,
 				A76053C725942F3B00A0A6AC /* PlayerCardView.swift in Sources */,
 				A79F552625A5414800522361 /* D100.swift in Sources */,
@@ -428,7 +432,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_ASSET_PATHS = "\"TcgLifeCounter/Preview Content\"";
 				DEVELOPMENT_TEAM = A2TVHL278P;
 				ENABLE_PREVIEWS = YES;
@@ -438,7 +442,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.4.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hscheue.TcgLifeCounter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -452,7 +456,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_ASSET_PATHS = "\"TcgLifeCounter/Preview Content\"";
 				DEVELOPMENT_TEAM = A2TVHL278P;
 				ENABLE_PREVIEWS = YES;
@@ -462,7 +466,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.4.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hscheue.TcgLifeCounter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
