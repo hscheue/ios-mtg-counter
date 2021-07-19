@@ -7,61 +7,50 @@
 
 import SwiftUI
 
-struct EntryCounterStyles: View {
-    var body: some View {
-        GeometryReader { geo in
-            ZStack {
-                Color(white: 0.8)
-                // replace with stroke? or google stroke method here
-                RoundedRectangle(cornerRadius: 25)
-                    .frame(
-                        width: geo.size.width * 0.8,
-                        height: geo.size.height * 0.8)
-                    .foregroundColor(.clear)
-                    .border(Color.black)
-                
-                Text("RED")
-            }
-        }
-    }
-}
-
-struct EntryCounterStyles_Previews: PreviewProvider {
-    static var previews: some View {
-        ZStack {
-            Color.green
-            EntryCounterStyles()
-                .frame(width: 128, height: 128)
-        }
-    }
-}
-
 struct EntryCounterClickArea: View {
     @State var counter = 0
     var body: some View {
         ZStack {
-            Color.blue
-            Path { path in
-                path.move(to: .zero)
-                path.addLine(to: CGPoint(x: 128, y: 0))
-                path.addLine(to: CGPoint(x: 128, y: 128))
+            GeometryReader { geo in
+                let width = geo.size.width
+                let height = geo.size.height
+                Path { path in
+                    path.move(to: .zero)
+                    path.addLine(to: CGPoint(x: width, y: 0))
+                    path.addLine(to: CGPoint(x: width, y: height))
+                }
+                .fill(Color(white: 0.9))
+                .onTapGesture {
+                    counter += 1
+                }
+                
+                Path { path in
+                    path.move(to: .zero)
+                    path.addLine(to: CGPoint(x: width, y: height))
+                    path.addLine(to: CGPoint(x: 0, y: height))
+                }
+                .fill(Color(white: 0.85))
+                .onTapGesture {
+                    counter -= 1
+                }
+                
+                Text("\(counter)")
+                    .position(x: width / 2, y: height / 2)
+                    .font(.system(size: 24.0))
+                    .foregroundColor(.black)
+                
+                Text("+")
+                    .font(.system(size: 12.0))
+                    .position(x: width, y: 0)
+                    .offset(x: -width / 11, y: height / 11)
+                    .foregroundColor(Color(white: 0.4))
+                
+                Text("-")
+                    .font(.system(size: 12.0))
+                    .position(x: 0, y: height)
+                    .offset(x: width / 11, y: -height / 11)
+                    .foregroundColor(Color(white: 0.2))
             }
-            .fill(Color.black)
-            .onTapGesture {
-                counter += 1
-            }
-            Path { path in
-                path.move(to: .zero)
-                path.addLine(to: CGPoint(x: 128, y: 128))
-                path.addLine(to: CGPoint(x: 0, y: 128))
-            }
-            .fill(Color.orange)
-            .onTapGesture {
-                counter -= 1
-            }
-            
-            Text("Count: \(counter)")
-                .foregroundColor(.red)
         }
     }
 }
@@ -97,13 +86,7 @@ struct EntryCounterPosition: View {
     
 
     var body: some View {
-        Color.green
-            .frame(width: 25, height: 25)
-            .position(x: position.width, y: position.height)
-        Color.orange
-            .frame(width: 25, height: 25)
-            .position(x: offset.width, y: offset.height)
-        Color.blue
+        EntryCounterClickArea()
             .frame(width: size, height: size)
             .position(x: position.width, y: position.height)
             .offset(offset)
