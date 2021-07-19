@@ -59,6 +59,8 @@ struct ContentView: View {
                     secondaryButton: .cancel()
                 )
             }
+            .onAppear { UIApplication.shared.isIdleTimerDisabled = true }
+            .onDisappear { UIApplication.shared.isIdleTimerDisabled = false }
         }
         .navigationViewStyle(StackNavigationViewStyle())
         .environmentObject(settings)
