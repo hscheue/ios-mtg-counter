@@ -32,7 +32,7 @@ class SharedSettings {
     }
 }
 
-struct MyView: View {
+struct ColorPreferencePickerView: View {
     // TODO: Could this just be state here? Could this be observedObject?
     @AppStorage(SharedSettings.storageKey) var storedColorScheme = SharedSettings.shared.storedColorScheme
     

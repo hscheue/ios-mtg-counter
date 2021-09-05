@@ -59,6 +59,7 @@ struct LifeEditorView: View {
 
 struct SettingsView: View {
     @EnvironmentObject var setting: Setting
+    @AppStorage("dciNumber") var dciNumber: String = ""
     @State var isPresentingLifeEditor = false
     
     var body: some View {
@@ -105,10 +106,15 @@ struct SettingsView: View {
                         isPresentingLifeEditor.toggle()
                     }
             }
-            MyView()
+            ColorPreferencePickerView()
             Toggle("Players facing outwards", isOn: $setting.playersFaceOutwards)
             DebounceSettingView()
+            
             LeaveFeedbackSectionView()
+            Section(header: Text("Other")) {
+                TextField("Remember my DCI number", text: $dciNumber)
+                    .keyboardType(.numberPad)
+            }
         }
         .pickerStyle(SegmentedPickerStyle())
     }
