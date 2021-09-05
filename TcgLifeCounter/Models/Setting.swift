@@ -9,7 +9,7 @@ import SwiftUI
 
 class Setting: ObservableObject, Codable {
     enum CodingKeys: CodingKey {
-        case startingLife, playerCount, customValue, playersFaceOutwards, debounceValue
+        case startingLife, playerCount, customValue, playersFaceOutwards, debounceValue, enableShotClock
     }
     
     @Published var startingLife: Int { didSet { save() } }
@@ -17,6 +17,7 @@ class Setting: ObservableObject, Codable {
     @Published var customValue: Int { didSet { save() } }
     @Published var playersFaceOutwards: Bool { didSet { save() } }
     @Published var debounceValue: Double { didSet { save() } }
+    @Published var enableShotClock: Bool { didSet { save() }}
     
     func save() {
         let encoder = JSONEncoder()
@@ -35,6 +36,7 @@ class Setting: ObservableObject, Codable {
                 customValue = decoded.customValue
                 playersFaceOutwards = decoded.playersFaceOutwards
                 debounceValue = decoded.debounceValue
+                enableShotClock = decoded.enableShotClock
                 return
             }
         }
@@ -43,6 +45,7 @@ class Setting: ObservableObject, Codable {
         customValue = 30
         playersFaceOutwards = false
         debounceValue = 2.0
+        enableShotClock = false
     }
     
     func encode(to encoder: Encoder) throws {
@@ -52,6 +55,7 @@ class Setting: ObservableObject, Codable {
         try container.encode(customValue, forKey: .customValue)
         try container.encode(playersFaceOutwards, forKey: .playersFaceOutwards)
         try container.encode(debounceValue, forKey: .debounceValue)
+        try container.encode(enableShotClock, forKey: .enableShotClock)
     }
     
     required init(from decoder: Decoder) throws {
@@ -61,5 +65,6 @@ class Setting: ObservableObject, Codable {
         customValue = (try? container.decode(Int.self, forKey: .customValue)) ?? 20
         playersFaceOutwards = (try? container.decode(Bool.self, forKey: .playersFaceOutwards)) ?? false
         debounceValue = (try? container.decode(Double.self, forKey: .debounceValue)) ?? 2.0
+        enableShotClock = (try? container.decode(Bool.self, forKey: .enableShotClock)) ?? false
     }
 }

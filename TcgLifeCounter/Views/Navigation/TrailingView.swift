@@ -10,9 +10,9 @@ import SwiftUI
 struct Trailing: View {
     let players: [PlayerState]
     let restartAction: () -> Void
-    
+
     var body: some View {
-        HStack {
+        HStack {            
             Button(action: restartAction) {
                 Image(systemName: "arrow.triangle.2.circlepath")
                     .font(.system(size: 32))

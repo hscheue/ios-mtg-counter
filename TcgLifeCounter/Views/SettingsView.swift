@@ -111,10 +111,16 @@ struct SettingsView: View {
             DebounceSettingView()
             
             LeaveFeedbackSectionView()
+
             Section(header: Text("Other")) {
-                TextField("Remember my DCI number", text: $dciNumber)
-                    .keyboardType(.numberPad)
+                HStack {
+                    Text("DCI#:")
+                    TextField("Remember my DCI number here", text: $dciNumber)
+                        .keyboardType(.numberPad)
+                }
             }
+            
+            TimerSettingsView()
         }
         .pickerStyle(SegmentedPickerStyle())
     }

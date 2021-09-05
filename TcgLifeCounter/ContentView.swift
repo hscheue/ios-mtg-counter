@@ -41,11 +41,12 @@ struct ContentView: View {
                 players: players,
                 outwards: settings.playersFaceOutwards
             )
-            .background(Color( "ViewBackgroundColor"))
+            .background(Color("ViewBackgroundColor"))
             .ignoresSafeArea(edges: .horizontal)
             .ignoresSafeArea(edges: .bottom)
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(
+                leading: TimerNavigationBarView(),
                 trailing: Trailing(
                     players: players,
                     restartAction: { isPresentingRestartAlert = true })
@@ -59,8 +60,7 @@ struct ContentView: View {
                     secondaryButton: .cancel()
                 )
             }
-            .onAppear { UIApplication.shared.isIdleTimerDisabled = true }
-            .onDisappear { UIApplication.shared.isIdleTimerDisabled = false }
+            .keepAwake()
         }
         .navigationViewStyle(StackNavigationViewStyle())
         .environmentObject(settings)

@@ -22,6 +22,7 @@
 		A78DC8FF25AFC4EC00A41933 /* NextPresentedLifeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78DC8FE25AFC4EC00A41933 /* NextPresentedLifeView.swift */; };
 		A78DC90225AFC54300A41933 /* Anchors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78DC90125AFC54300A41933 /* Anchors.swift */; };
 		A78DC90625AFC80000A41933 /* PlayerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78DC90525AFC80000A41933 /* PlayerState.swift */; };
+		A79DA85126A5CD63005FD1BC /* ScreenLockModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79DA85026A5CD63005FD1BC /* ScreenLockModifier.swift */; };
 		A79E517B267FC9A900626827 /* TEST_EntryCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79E517A267FC9A900626827 /* TEST_EntryCounter.swift */; };
 		A79EFFDB25AE8B4400E36B64 /* HalfRoundedRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79EFFDA25AE8B4400E36B64 /* HalfRoundedRect.swift */; };
 		A79F550F25A5165F00522361 /* D2Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79F550E25A5165F00522361 /* D2Shape.swift */; };
@@ -35,6 +36,10 @@
 		A79F552C25A66BAD00522361 /* HVStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79F552B25A66BAD00522361 /* HVStack.swift */; };
 		A7B775A225BB7B9800E3FDDF /* DebounceSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B775A125BB7B9800E3FDDF /* DebounceSettingView.swift */; };
 		A7CECA33259FB9A900B783C5 /* DieRollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CECA32259FB9A900B783C5 /* DieRollView.swift */; };
+		A7E668C526B4A82700CE10BA /* buzzer.wav in Resources */ = {isa = PBXBuildFile; fileRef = A7E668C426B4A82700CE10BA /* buzzer.wav */; };
+		A7E668C826B4AB9300CE10BA /* TimerObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E668C726B4AB9300CE10BA /* TimerObject.swift */; };
+		A7E668CC26B4ABB600CE10BA /* TimerSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E668CB26B4ABB600CE10BA /* TimerSettingsView.swift */; };
+		A7E668D226B4D59600CE10BA /* TimerNavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E668D126B4D59600CE10BA /* TimerNavigationBarView.swift */; };
 		A7F3EE7C25BC8CDD008ACB2F /* TrailingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F3EE7B25BC8CDD008ACB2F /* TrailingView.swift */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +61,7 @@
 		A78DC8FE25AFC4EC00A41933 /* NextPresentedLifeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextPresentedLifeView.swift; sourceTree = "<group>"; };
 		A78DC90125AFC54300A41933 /* Anchors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Anchors.swift; sourceTree = "<group>"; };
 		A78DC90525AFC80000A41933 /* PlayerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerState.swift; sourceTree = "<group>"; };
+		A79DA85026A5CD63005FD1BC /* ScreenLockModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenLockModifier.swift; sourceTree = "<group>"; };
 		A79E517A267FC9A900626827 /* TEST_EntryCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TEST_EntryCounter.swift; sourceTree = "<group>"; };
 		A79EFFDA25AE8B4400E36B64 /* HalfRoundedRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfRoundedRect.swift; sourceTree = "<group>"; };
 		A79F550E25A5165F00522361 /* D2Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D2Shape.swift; sourceTree = "<group>"; };
@@ -69,6 +75,10 @@
 		A79F552B25A66BAD00522361 /* HVStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HVStack.swift; sourceTree = "<group>"; };
 		A7B775A125BB7B9800E3FDDF /* DebounceSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebounceSettingView.swift; sourceTree = "<group>"; };
 		A7CECA32259FB9A900B783C5 /* DieRollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DieRollView.swift; sourceTree = "<group>"; };
+		A7E668C426B4A82700CE10BA /* buzzer.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = buzzer.wav; sourceTree = "<group>"; };
+		A7E668C726B4AB9300CE10BA /* TimerObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerObject.swift; sourceTree = "<group>"; };
+		A7E668CB26B4ABB600CE10BA /* TimerSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerSettingsView.swift; sourceTree = "<group>"; };
+		A7E668D126B4D59600CE10BA /* TimerNavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerNavigationBarView.swift; sourceTree = "<group>"; };
 		A7F3EE7B25BC8CDD008ACB2F /* TrailingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -102,6 +112,8 @@
 		A70511F02593F28C002D801F /* TcgLifeCounter */ = {
 			isa = PBXGroup;
 			children = (
+				A7E668C626B4AB6500CE10BA /* CountdownTimer */,
+				A7E668C426B4A82700CE10BA /* buzzer.wav */,
 				A70D81C525B715FA00ECBE87 /* Modifiers */,
 				A79F552A25A66B9F00522361 /* SharedViews */,
 				A79F550D25A5165000522361 /* Shapes */,
@@ -130,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				A70D81C625B7161300ECBE87 /* NavigationBarModifier.swift */,
+				A79DA85026A5CD63005FD1BC /* ScreenLockModifier.swift */,
 			);
 			path = Modifiers;
 			sourceTree = "<group>";
@@ -190,6 +203,16 @@
 				A7B775A125BB7B9800E3FDDF /* DebounceSettingView.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		A7E668C626B4AB6500CE10BA /* CountdownTimer */ = {
+			isa = PBXGroup;
+			children = (
+				A7E668C726B4AB9300CE10BA /* TimerObject.swift */,
+				A7E668CB26B4ABB600CE10BA /* TimerSettingsView.swift */,
+				A7E668D126B4D59600CE10BA /* TimerNavigationBarView.swift */,
+			);
+			path = CountdownTimer;
 			sourceTree = "<group>";
 		};
 		A7F3EE7A25BC8C28008ACB2F /* Navigation */ = {
@@ -265,6 +288,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7E668C526B4A82700CE10BA /* buzzer.wav in Resources */,
 				A70511F92593F28D002D801F /* Preview Assets.xcassets in Resources */,
 				A70511F62593F28D002D801F /* Assets.xcassets in Resources */,
 			);
@@ -277,6 +301,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7E668CC26B4ABB600CE10BA /* TimerSettingsView.swift in Sources */,
 				A70511F42593F28C002D801F /* ContentView.swift in Sources */,
 				A78DC90225AFC54300A41933 /* Anchors.swift in Sources */,
 				A788965A25B5B2D90063E1FB /* StoreKitTesting.swift in Sources */,
@@ -288,6 +313,7 @@
 				A714C43625B5DCAF00145001 /* HistoryView.swift in Sources */,
 				A79F552025A52FAE00522361 /* D12Shape.swift in Sources */,
 				A79F550F25A5165F00522361 /* D2Shape.swift in Sources */,
+				A7E668C826B4AB9300CE10BA /* TimerObject.swift in Sources */,
 				A76B18B82597E97400565C31 /* FiveSixPlayerLayoutView.swift in Sources */,
 				A79F551725A51C0600522361 /* D6Shape.swift in Sources */,
 				A79F552C25A66BAD00522361 /* HVStack.swift in Sources */,
@@ -300,6 +326,8 @@
 				A79EFFDB25AE8B4400E36B64 /* HalfRoundedRect.swift in Sources */,
 				A70D81C725B7161300ECBE87 /* NavigationBarModifier.swift in Sources */,
 				A79F551325A5194400522361 /* D4Shape.swift in Sources */,
+				A7E668D226B4D59600CE10BA /* TimerNavigationBarView.swift in Sources */,
+				A79DA85126A5CD63005FD1BC /* ScreenLockModifier.swift in Sources */,
 				A78DC8FF25AFC4EC00A41933 /* NextPresentedLifeView.swift in Sources */,
 				A70511F22593F28C002D801F /* TcgLifeCounterApp.swift in Sources */,
 				A79F551A25A51D4000522361 /* D8Shape.swift in Sources */,
@@ -432,7 +460,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 23;
+				CURRENT_PROJECT_VERSION = 24;
 				DEVELOPMENT_ASSET_PATHS = "\"TcgLifeCounter/Preview Content\"";
 				DEVELOPMENT_TEAM = A2TVHL278P;
 				ENABLE_PREVIEWS = YES;
@@ -442,7 +470,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4.1;
+				MARKETING_VERSION = 1.4.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hscheue.TcgLifeCounter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -456,7 +484,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 23;
+				CURRENT_PROJECT_VERSION = 24;
 				DEVELOPMENT_ASSET_PATHS = "\"TcgLifeCounter/Preview Content\"";
 				DEVELOPMENT_TEAM = A2TVHL278P;
 				ENABLE_PREVIEWS = YES;
@@ -466,7 +494,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4.1;
+				MARKETING_VERSION = 1.4.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hscheue.TcgLifeCounter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
