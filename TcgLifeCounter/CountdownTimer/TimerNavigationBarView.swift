@@ -18,12 +18,15 @@ struct TimerNavigationBarView: View {
                     Image(systemName: "xmark.circle.fill")
                         .font(.system(size: 20))
                 })
+                .accessibilityLabel("Clear Shotclock Timer")
                 
-                Button(action: timer.increment, label: {
+                Button(action: { timer.increment(setting.shotClockIncrement) }, label: {
                     Text("\(timer.display)")
                         .font(.system(size: 18))
                         .frame(minWidth: 64)
                 })
+                .accessibilityLabel("Add \(setting.shotClockIncrement) seconds to shot clock")
+                .accessibilityValue("\(timer.accessibilityDisplay) remaining")
             }
         }
     }

@@ -9,7 +9,7 @@ import SwiftUI
 
 class Setting: ObservableObject, Codable {
     enum CodingKeys: CodingKey {
-        case startingLife, playerCount, customValue, playersFaceOutwards, debounceValue, enableShotClock
+        case startingLife, playerCount, customValue, playersFaceOutwards, debounceValue, enableShotClock, shotClockIncrement
     }
     
     @Published var startingLife: Int { didSet { save() } }
@@ -18,6 +18,7 @@ class Setting: ObservableObject, Codable {
     @Published var playersFaceOutwards: Bool { didSet { save() } }
     @Published var debounceValue: Double { didSet { save() } }
     @Published var enableShotClock: Bool { didSet { save() }}
+    @Published var shotClockIncrement: Int { didSet { save() }}
     
     func save() {
         let encoder = JSONEncoder()
@@ -37,6 +38,7 @@ class Setting: ObservableObject, Codable {
                 playersFaceOutwards = decoded.playersFaceOutwards
                 debounceValue = decoded.debounceValue
                 enableShotClock = decoded.enableShotClock
+                shotClockIncrement = decoded.shotClockIncrement
                 return
             }
         }
@@ -46,6 +48,7 @@ class Setting: ObservableObject, Codable {
         playersFaceOutwards = false
         debounceValue = 2.0
         enableShotClock = false
+        shotClockIncrement = 30
     }
     
     func encode(to encoder: Encoder) throws {
@@ -56,6 +59,7 @@ class Setting: ObservableObject, Codable {
         try container.encode(playersFaceOutwards, forKey: .playersFaceOutwards)
         try container.encode(debounceValue, forKey: .debounceValue)
         try container.encode(enableShotClock, forKey: .enableShotClock)
+        try container.encode(shotClockIncrement, forKey: .shotClockIncrement)
     }
     
     required init(from decoder: Decoder) throws {
@@ -66,5 +70,6 @@ class Setting: ObservableObject, Codable {
         playersFaceOutwards = (try? container.decode(Bool.self, forKey: .playersFaceOutwards)) ?? false
         debounceValue = (try? container.decode(Double.self, forKey: .debounceValue)) ?? 2.0
         enableShotClock = (try? container.decode(Bool.self, forKey: .enableShotClock)) ?? false
+        shotClockIncrement = (try? container.decode(Int.self, forKey: .shotClockIncrement)) ?? 30
     }
 }

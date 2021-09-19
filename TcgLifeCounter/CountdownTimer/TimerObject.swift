@@ -10,19 +10,21 @@ import Combine
 import AVFoundation
 
 class TimerObject: ObservableObject {
+    @EnvironmentObject var setting: Setting
     private var cancellable = Set<AnyCancellable>()
     private var timerSoundEffect: AVAudioPlayer? = nil
     @AppStorage("timeRemaining") private var timeRemaining: TimeInterval = .zero
 
     init() {
-        Timer.publish(every: 1.0, on: .main, in: .common).autoconnect()
+        Timer
+            .publish(every: 1.0, on: .main, in: .common)
+            .autoconnect()
             .sink() { _ in self.decrement() }
             .store(in: &cancellable)
 
         let path = Bundle.main.path(forResource: "buzzer.wav", ofType:nil)!
         let url = URL(fileURLWithPath: path)
         timerSoundEffect = try? AVAudioPlayer(contentsOf: url)
-
     }
     
     private func decrement() {
@@ -41,8 +43,15 @@ class TimerObject: ObservableObject {
         return formatter.string(from: self.timeRemaining)!
     }
     
-    public func increment() {
-        self.timeRemaining += 30
+    public var accessibilityDisplay: String {
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.hour, .minute, .second]
+        formatter.unitsStyle = .full
+        return formatter.string(from: self.timeRemaining)!
+    }
+    
+    public func increment(_ value: Int) {
+        self.timeRemaining += TimeInterval(value)
     }
     
     public func stop() {

@@ -90,5 +90,8 @@ struct CommitChangeStateView: View {
         }
         .rotationEffect(horizontal ? .zero : .degrees(90))
         .allowsHitTesting(false)
+        .accessibilityElement(children: .ignore)
+        .accessibilityAddTraits(.updatesFrequently)
+        .accessibilityLabel("\(playerState.current?.value ?? 0) life; Player: \(playerState.name)")
     }
 }

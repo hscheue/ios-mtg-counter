@@ -122,6 +122,9 @@ struct ButtonView: View {
             }
         }
         .contentShape(HalfRoundedRect(horizontal ? .left : .top))
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("Minus: \(player.name)")
+        .accessibilityValue("now \(player.current?.value ?? 0)")
     }
 }
 
@@ -182,6 +185,9 @@ struct ButtonAddView: View {
             }
         }
         .contentShape(HalfRoundedRect(horizontal ? .right : .bottom))
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("Add: \(player.name)")
+        .accessibilityValue("now \(player.current?.value ?? 0)")
     }
 }
 

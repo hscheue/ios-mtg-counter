@@ -13,6 +13,7 @@
 		A70511F92593F28D002D801F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A70511F82593F28D002D801F /* Preview Assets.xcassets */; };
 		A70D81C725B7161300ECBE87 /* NavigationBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70D81C625B7161300ECBE87 /* NavigationBarModifier.swift */; };
 		A714C43625B5DCAF00145001 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A714C43525B5DCAF00145001 /* HistoryView.swift */; };
+		A74DB78326EE631700285F91 /* DoneButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74DB78226EE631700285F91 /* DoneButton.swift */; };
 		A76053C325942E7900A0A6AC /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76053C225942E7900A0A6AC /* Setting.swift */; };
 		A76053C725942F3B00A0A6AC /* PlayerCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76053C625942F3B00A0A6AC /* PlayerCardView.swift */; };
 		A76053CE25942F6000A0A6AC /* PlayersLayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76053CD25942F6000A0A6AC /* PlayersLayoutView.swift */; };
@@ -52,6 +53,7 @@
 		A70511FA2593F28D002D801F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A70D81C625B7161300ECBE87 /* NavigationBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarModifier.swift; sourceTree = "<group>"; };
 		A714C43525B5DCAF00145001 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		A74DB78226EE631700285F91 /* DoneButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneButton.swift; sourceTree = "<group>"; };
 		A76053C225942E7900A0A6AC /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		A76053C625942F3B00A0A6AC /* PlayerCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCardView.swift; sourceTree = "<group>"; };
 		A76053CD25942F6000A0A6AC /* PlayersLayoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersLayoutView.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 			children = (
 				A79F552B25A66BAD00522361 /* HVStack.swift */,
 				A78DC90125AFC54300A41933 /* Anchors.swift */,
+				A74DB78226EE631700285F91 /* DoneButton.swift */,
 			);
 			path = SharedViews;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 				A79F552025A52FAE00522361 /* D12Shape.swift in Sources */,
 				A79F550F25A5165F00522361 /* D2Shape.swift in Sources */,
 				A7E668C826B4AB9300CE10BA /* TimerObject.swift in Sources */,
+				A74DB78326EE631700285F91 /* DoneButton.swift in Sources */,
 				A76B18B82597E97400565C31 /* FiveSixPlayerLayoutView.swift in Sources */,
 				A79F551725A51C0600522361 /* D6Shape.swift in Sources */,
 				A79F552C25A66BAD00522361 /* HVStack.swift in Sources */,
@@ -460,7 +464,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 24;
+				CURRENT_PROJECT_VERSION = 27;
 				DEVELOPMENT_ASSET_PATHS = "\"TcgLifeCounter/Preview Content\"";
 				DEVELOPMENT_TEAM = A2TVHL278P;
 				ENABLE_PREVIEWS = YES;
@@ -470,7 +474,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4.2;
+				MARKETING_VERSION = 1.5.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hscheue.TcgLifeCounter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -484,7 +488,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 24;
+				CURRENT_PROJECT_VERSION = 27;
 				DEVELOPMENT_ASSET_PATHS = "\"TcgLifeCounter/Preview Content\"";
 				DEVELOPMENT_TEAM = A2TVHL278P;
 				ENABLE_PREVIEWS = YES;
@@ -494,7 +498,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4.2;
+				MARKETING_VERSION = 1.5.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hscheue.TcgLifeCounter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

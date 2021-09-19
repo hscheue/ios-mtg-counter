@@ -17,6 +17,7 @@ struct Trailing: View {
                 Image(systemName: "arrow.triangle.2.circlepath")
                     .font(.system(size: 32))
             }
+            .accessibilityLabel("Start New Game")
             
             NavigationLink(
                 destination: DieRollView()
@@ -25,6 +26,7 @@ struct Trailing: View {
                 Image(systemName: "die.face.5.fill")
                     .font(.system(size: 32))
             }
+            .accessibilityLabel("View dice roll options")
             
             NavigationLink(
                 destination: HistoryView(players: players)
@@ -33,6 +35,7 @@ struct Trailing: View {
                 Image(systemName: "clock.fill")
                     .font(.system(size: 32))
             }
+            .accessibilityLabel("View life total history")
             
             NavigationLink(
                 destination: SettingsView()
@@ -41,6 +44,7 @@ struct Trailing: View {
                 Image(systemName: "gearshape.fill")
                     .font(.system(size: 32))
             }
+            .accessibilityLabel("View app settings")
         }
     }
 }

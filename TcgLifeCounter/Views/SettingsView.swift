@@ -3,7 +3,7 @@
 //  TcgLifeCounter
 //
 //  Created by harry scheuerle on 12/24/20.
-//
+//  https://developer.apple.com/library/archive/documentation/StringsTextFonts/Conceptual/TextAndWebiPhoneOS/Introduction/Introduction.html#//apple_ref/doc/uid/TP40009542
 
 import SwiftUI
 
@@ -115,23 +115,27 @@ struct SettingsView: View {
             Section(header: Text("Other")) {
                 HStack {
                     Text("DCI#:")
-                    TextField("Remember my DCI number here", text: $dciNumber)
+                    TextField("Remember my DCI number", text: $dciNumber)
                         .keyboardType(.numberPad)
+                        .multilineTextAlignment(.trailing)
                 }
+                TimerSettingsView()
             }
             
-            TimerSettingsView()
         }
         .pickerStyle(SegmentedPickerStyle())
+        .navigationBarItems(trailing: DoneButton())
     }
 }
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView()
-            .environmentObject(Setting())
-        SettingsView()
-            .environmentObject(Setting())
+        NavigationView {
+            SettingsView()
+                .navigationBarTitleDisplayMode(.inline)
+        }
+        .navigationViewStyle(StackNavigationViewStyle())
+        .environmentObject(Setting())
     }
 }
 
