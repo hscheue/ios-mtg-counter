@@ -4,9 +4,12 @@
 //
 //  Created by harry scheuerle on 12/23/20.
 //
+// https://developer.apple.com/documentation/uikit/uifeedbackgenerator
 
 import SwiftUI
 import Combine
+import AVFoundation
+import CoreHaptics
 
 struct PlayerCardView: View {
     // MARK: Initialized
@@ -89,11 +92,46 @@ struct ButtonView: View {
     @ObservedObject var player: PlayerState
     let horizontal: Bool
     let clickAction: () -> Void
-    
+    @State private var engine: CHHapticEngine?
+
     @Environment(\.colorScheme) private var colorScheme
     @State private var opacity: Double = 0
     
+    func prepareHaptics() {
+        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
+
+        do {
+            self.engine = try CHHapticEngine()
+            try engine?.start()
+        } catch {
+            print("There was an error creating the engine: \(error.localizedDescription)")
+        }
+    }
+    
+    func complexSuccess() {
+        // make sure that the device supports haptics
+        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
+        var events = [CHHapticEvent]()
+
+        // create one intense, sharp tap
+        let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: 1)
+        let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: 1)
+        let event = CHHapticEvent(eventType: .hapticTransient, parameters: [intensity, sharpness], relativeTime: 0)
+        events.append(event)
+
+        // convert those events into a pattern and play it immediately
+        do {
+            let pattern = try CHHapticPattern(events: events, parameters: [])
+            let player = try engine?.makePlayer(with: pattern)
+            try player?.start(atTime: 0)
+        } catch {
+            print("Failed to play pattern: \(error.localizedDescription).")
+        }
+    }
+    
     func handleClick() {
+        AudioServicesPlaySystemSound(SystemSoundID(1156))
+        complexSuccess()
         clickAction()
         opacity = 0.2
         withAnimation {
@@ -121,6 +159,7 @@ struct ButtonView: View {
                     .allowsHitTesting(false)
             }
         }
+        .onAppear(perform: prepareHaptics)
         .contentShape(HalfRoundedRect(horizontal ? .left : .top))
         .accessibilityElement(children: .ignore)
         .accessibilityLabel("Minus: \(player.name)")
@@ -135,8 +174,43 @@ struct ButtonAddView: View {
     
     @Environment(\.colorScheme) private var colorScheme
     @State private var opacity: Double = 0
+    @State private var engine: CHHapticEngine?
+
+    func prepareHaptics() {
+        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
+
+        do {
+            self.engine = try CHHapticEngine()
+            try engine?.start()
+        } catch {
+            print("There was an error creating the engine: \(error.localizedDescription)")
+        }
+    }
+    
+    func complexSuccess() {
+        // make sure that the device supports haptics
+        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
+        var events = [CHHapticEvent]()
+
+        // create one intense, sharp tap
+        let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: 0.7)
+        let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: 0.8)
+        let event = CHHapticEvent(eventType: .hapticTransient, parameters: [intensity, sharpness], relativeTime: 0)
+        events.append(event)
+
+        // convert those events into a pattern and play it immediately
+        do {
+            let pattern = try CHHapticPattern(events: events, parameters: [])
+            let player = try engine?.makePlayer(with: pattern)
+            try player?.start(atTime: 0)
+        } catch {
+            print("Failed to play pattern: \(error.localizedDescription).")
+        }
+    }
     
     func handleClick() {
+        AudioServicesPlaySystemSound(SystemSoundID(1104))
+        complexSuccess()
         clickAction()
         opacity = 0.2
         withAnimation {
@@ -184,6 +258,7 @@ struct ButtonAddView: View {
                 }
             }
         }
+        .onAppear(perform: prepareHaptics)
         .contentShape(HalfRoundedRect(horizontal ? .right : .bottom))
         .accessibilityElement(children: .ignore)
         .accessibilityLabel("Add: \(player.name)")

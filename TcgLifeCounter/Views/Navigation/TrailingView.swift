@@ -4,6 +4,9 @@
 //
 //  Created by harry scheuerle on 1/23/21.
 //
+// ios 15 font sizes changed and icons turning blue
+// https://www.hackingwithswift.com/quick-start/swiftui/how-to-disable-the-overlay-color-for-images-inside-button-and-navigationlink
+//
 
 import SwiftUI
 
@@ -15,7 +18,7 @@ struct Trailing: View {
         HStack {            
             Button(action: restartAction) {
                 Image(systemName: "arrow.triangle.2.circlepath")
-                    .font(.system(size: 32))
+                    .font(.system(size: 26))
             }
             .accessibilityLabel("Start New Game")
             
@@ -24,7 +27,7 @@ struct Trailing: View {
                     .navigationBarColor(UIColor(named: "NavBackgroundColor"))
             ) {
                 Image(systemName: "die.face.5.fill")
-                    .font(.system(size: 32))
+                    .font(.system(size: 26))
             }
             .accessibilityLabel("View dice roll options")
             
@@ -33,7 +36,7 @@ struct Trailing: View {
                     .navigationBarColor(UIColor(named: "NavBackgroundColor"))
             ) {
                 Image(systemName: "clock.fill")
-                    .font(.system(size: 32))
+                    .font(.system(size: 26))
             }
             .accessibilityLabel("View life total history")
             
@@ -42,9 +45,10 @@ struct Trailing: View {
                     .navigationBarColor(UIColor(named: "NavBackgroundColor"))
             ) {
                 Image(systemName: "gearshape.fill")
-                    .font(.system(size: 32))
+                    .font(.system(size: 26))
             }
             .accessibilityLabel("View app settings")
         }
+        .buttonStyle(.plain)
     }
 }
