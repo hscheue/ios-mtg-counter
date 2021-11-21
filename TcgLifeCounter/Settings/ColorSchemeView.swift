@@ -12,14 +12,17 @@ struct ColorSchemeView: View {
     @AppStorage(SharedSettings.storageKey) var storedColorScheme = SharedSettings.shared.storedColorScheme
     
     var body: some View {
-        Picker("Color Scheme", selection: $storedColorScheme) {
-            Text("System")
-                .tag(StoredColorScheme.system)
-            Text("Light")
-                .tag(StoredColorScheme.light)
-            Text("Dark")
-                .tag(StoredColorScheme.dark)
+        HStack {
+            Text("Theme")
+            Picker("Color Scheme", selection: $storedColorScheme) {
+                Text("System")
+                    .tag(StoredColorScheme.system)
+                Text("Light")
+                    .tag(StoredColorScheme.light)
+                Text("Dark")
+                    .tag(StoredColorScheme.dark)
+            }
+            .pickerStyle(SegmentedPickerStyle())
         }
-        .pickerStyle(SegmentedPickerStyle())
     }
 }

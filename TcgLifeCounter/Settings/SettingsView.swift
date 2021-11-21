@@ -64,51 +64,49 @@ struct SettingsView: View {
     
     var body: some View {
         List {
-            VStack(alignment: .leading) {
-                Text("Current Setting")
-                    .font(.title)
-                
+            Section {
+                Stepper(value: $setting.playerCount, in: 1...6) {
+                    HStack {
+                        Text("Player Count")
+                        Spacer()
+                        Text("\(setting.playerCount)")
+                    }
+                }
                 HStack {
-                    Text("Players: \(setting.playerCount)")
-                    Text("Lifetotal: \(setting.startingLife)")
-                }
-            }
-            Picker("Players", selection: $setting.playerCount) {
-                ForEach(2...6, id: \.self) {
-                    Text("\($0) Players").tag($0)
-                }
-            }
-            HStack {
-                if !isPresentingLifeEditor {
-                    Picker("Lifetotal", selection: $setting.startingLife) {
-                        Text("Standard")
-                            .tag(20)
-                        Text("Brawl")
-                            .tag(25)
-                        Text("Commander")
-                            .tag(40)
-                        Text("Custom")
-                            .tag(setting.customValue)
+                    Text("Lifetotal")
+                    if !isPresentingLifeEditor {
+                        Picker("Lifetotal", selection: $setting.startingLife) {
+                            Text("20")
+                                .tag(20)
+                            Text("25")
+                                .tag(25)
+                            Text("40")
+                                .tag(40)
+                            Text("Custom")
+                                .tag(setting.customValue)
+                        }
+                    } else {
+                        LifeEditorView(value: String(setting.customValue))
                     }
-                } else {
-                    LifeEditorView(value: String(setting.customValue))
+                    Image(systemName: isPresentingLifeEditor
+                            ? "checkmark.circle" : "square.and.pencil")
+                        .accessibilityAddTraits(.isButton)
+                        .accessibilityLabel(
+                            isPresentingLifeEditor
+                                ? "Save custom life total"
+                                : "Change lifetotal from \(setting.customValue)"
+                        )
+                        .onTapGesture {
+                            setting.startingLife = setting.customValue
+                            isPresentingLifeEditor.toggle()
+                        }
                 }
-                Image(systemName: isPresentingLifeEditor
-                        ? "checkmark.circle" : "square.and.pencil")
-                    .accessibilityAddTraits(.isButton)
-                    .accessibilityLabel(
-                        isPresentingLifeEditor
-                            ? "Save custom life total"
-                            : "Change lifetotal from \(setting.customValue)"
-                    )
-                    .onTapGesture {
-                        setting.startingLife = setting.customValue
-                        isPresentingLifeEditor.toggle()
-                    }
+                ColorSchemeView()
+                
+                Toggle("Players facing outwards", isOn: $setting.playersFaceOutwards)
+                
+                DebounceSettingView()
             }
-            ColorSchemeView()
-            Toggle("Players facing outwards", isOn: $setting.playersFaceOutwards)
-            DebounceSettingView()
             
             LeaveFeedbackSectionView()
 
@@ -125,6 +123,7 @@ struct SettingsView: View {
         }
         .pickerStyle(SegmentedPickerStyle())
         .navigationBarItems(trailing: DoneButton())
+        .navigationBarTitle(Text("Settings"))
     }
 }
 
