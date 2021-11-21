@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class Setting: ObservableObject, Codable {
+class SettingsState: ObservableObject, Codable {
     enum CodingKeys: CodingKey {
         case startingLife, playerCount, customValue, playersFaceOutwards, debounceValue, enableShotClock, shotClockIncrement
     }
@@ -31,7 +31,7 @@ class Setting: ObservableObject, Codable {
         // TODO: better in factory initializer?
         if let data = UserDefaults.standard.data(forKey: "SettingKey") {
             let decoder = JSONDecoder()
-            if let decoded = try? decoder.decode(Setting.self, from: data) {
+            if let decoded = try? decoder.decode(SettingsState.self, from: data) {
                 startingLife = decoded.startingLife
                 playerCount = decoded.playerCount
                 customValue = decoded.customValue

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TimerNavigationBarView: View {
-    @EnvironmentObject var setting: Setting
+    @EnvironmentObject var setting: SettingsState
     @StateObject var timer = TimerObject()
     
     var body: some View {
@@ -28,6 +28,7 @@ struct TimerNavigationBarView: View {
                 .accessibilityLabel("Add \(setting.shotClockIncrement) seconds to shot clock")
                 .accessibilityValue("\(timer.accessibilityDisplay) remaining")
             }
+            .buttonStyle(.plain)
         }
     }
 }
@@ -35,5 +36,6 @@ struct TimerNavigationBarView: View {
 struct TimerNavigationBarView_Previews: PreviewProvider {
     static var previews: some View {
         TimerNavigationBarView()
+            .environmentObject(SettingsState())
     }
 }

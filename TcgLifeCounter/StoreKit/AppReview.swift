@@ -21,7 +21,7 @@ class UserDefaultsKeys {
 }
 
 
-struct AppReviewController {
+struct AppReview {
     private static func unwrapURL(string: String) -> URL {
         guard let validURL = URL(string: string) else { fatalError("Expected a valid URL") }
         return validURL

@@ -14,15 +14,16 @@
 		A70D81C725B7161300ECBE87 /* NavigationBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70D81C625B7161300ECBE87 /* NavigationBarModifier.swift */; };
 		A714C43625B5DCAF00145001 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A714C43525B5DCAF00145001 /* HistoryView.swift */; };
 		A74DB78326EE631700285F91 /* DoneButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74DB78226EE631700285F91 /* DoneButton.swift */; };
-		A76053C325942E7900A0A6AC /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76053C225942E7900A0A6AC /* Setting.swift */; };
+		A76053C325942E7900A0A6AC /* SettingsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76053C225942E7900A0A6AC /* SettingsState.swift */; };
 		A76053C725942F3B00A0A6AC /* PlayerCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76053C625942F3B00A0A6AC /* PlayerCardView.swift */; };
 		A76053CE25942F6000A0A6AC /* PlayersLayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76053CD25942F6000A0A6AC /* PlayersLayoutView.swift */; };
 		A76053D6259549D500A0A6AC /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76053D5259549D500A0A6AC /* SettingsView.swift */; };
 		A76B18B82597E97400565C31 /* FiveSixPlayerLayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76B18B72597E97400565C31 /* FiveSixPlayerLayoutView.swift */; };
-		A788965A25B5B2D90063E1FB /* StoreKitTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = A788965925B5B2D90063E1FB /* StoreKitTesting.swift */; };
+		A788965A25B5B2D90063E1FB /* AppReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = A788965925B5B2D90063E1FB /* AppReview.swift */; };
 		A78DC8FF25AFC4EC00A41933 /* NextPresentedLifeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78DC8FE25AFC4EC00A41933 /* NextPresentedLifeView.swift */; };
 		A78DC90225AFC54300A41933 /* Anchors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78DC90125AFC54300A41933 /* Anchors.swift */; };
 		A78DC90625AFC80000A41933 /* PlayerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78DC90525AFC80000A41933 /* PlayerState.swift */; };
+		A79109B12749CC280011BA9C /* ColorSchemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79109B02749CC280011BA9C /* ColorSchemeView.swift */; };
 		A79DA85126A5CD63005FD1BC /* ScreenLockModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79DA85026A5CD63005FD1BC /* ScreenLockModifier.swift */; };
 		A79E517B267FC9A900626827 /* TEST_EntryCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79E517A267FC9A900626827 /* TEST_EntryCounter.swift */; };
 		A79EFFDB25AE8B4400E36B64 /* HalfRoundedRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79EFFDA25AE8B4400E36B64 /* HalfRoundedRect.swift */; };
@@ -54,15 +55,16 @@
 		A70D81C625B7161300ECBE87 /* NavigationBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarModifier.swift; sourceTree = "<group>"; };
 		A714C43525B5DCAF00145001 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		A74DB78226EE631700285F91 /* DoneButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneButton.swift; sourceTree = "<group>"; };
-		A76053C225942E7900A0A6AC /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
+		A76053C225942E7900A0A6AC /* SettingsState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsState.swift; sourceTree = "<group>"; };
 		A76053C625942F3B00A0A6AC /* PlayerCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCardView.swift; sourceTree = "<group>"; };
 		A76053CD25942F6000A0A6AC /* PlayersLayoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersLayoutView.swift; sourceTree = "<group>"; };
-		A76053D5259549D500A0A6AC /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsView.swift; path = TcgLifeCounter/Views/SettingsView.swift; sourceTree = SOURCE_ROOT; };
+		A76053D5259549D500A0A6AC /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsView.swift; path = TcgLifeCounter/Settings/SettingsView.swift; sourceTree = SOURCE_ROOT; };
 		A76B18B72597E97400565C31 /* FiveSixPlayerLayoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveSixPlayerLayoutView.swift; sourceTree = "<group>"; };
-		A788965925B5B2D90063E1FB /* StoreKitTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreKitTesting.swift; sourceTree = "<group>"; };
+		A788965925B5B2D90063E1FB /* AppReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReview.swift; sourceTree = "<group>"; };
 		A78DC8FE25AFC4EC00A41933 /* NextPresentedLifeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextPresentedLifeView.swift; sourceTree = "<group>"; };
 		A78DC90125AFC54300A41933 /* Anchors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Anchors.swift; sourceTree = "<group>"; };
 		A78DC90525AFC80000A41933 /* PlayerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerState.swift; sourceTree = "<group>"; };
+		A79109B02749CC280011BA9C /* ColorSchemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSchemeView.swift; sourceTree = "<group>"; };
 		A79DA85026A5CD63005FD1BC /* ScreenLockModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenLockModifier.swift; sourceTree = "<group>"; };
 		A79E517A267FC9A900626827 /* TEST_EntryCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TEST_EntryCounter.swift; sourceTree = "<group>"; };
 		A79EFFDA25AE8B4400E36B64 /* HalfRoundedRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfRoundedRect.swift; sourceTree = "<group>"; };
@@ -114,16 +116,18 @@
 		A70511F02593F28C002D801F /* TcgLifeCounter */ = {
 			isa = PBXGroup;
 			children = (
-				A7E668C626B4AB6500CE10BA /* CountdownTimer */,
-				A7E668C426B4A82700CE10BA /* buzzer.wav */,
-				A70D81C525B715FA00ECBE87 /* Modifiers */,
 				A79F552A25A66B9F00522361 /* SharedViews */,
-				A79F550D25A5165000522361 /* Shapes */,
-				A76053C025942E5700A0A6AC /* Models */,
-				A76053BF25942E4C00A0A6AC /* Views */,
+				A70D81C525B715FA00ECBE87 /* Modifiers */,
+				A7F3EE7A25BC8C28008ACB2F /* Navigation */,
+				A79109AF2749CAEF0011BA9C /* PlayArea */,
+				A79109AD2749CA4D0011BA9C /* DiceRoll */,
+				A79109AE2749CAA00011BA9C /* History */,
+				A7E668C626B4AB6500CE10BA /* CountdownTimer */,
+				A7B775A025BB7B8500E3FDDF /* Settings */,
+				A79109AC2749C9870011BA9C /* StoreKit */,
 				A70511F12593F28C002D801F /* TcgLifeCounterApp.swift */,
 				A70511F32593F28C002D801F /* ContentView.swift */,
-				A788965925B5B2D90063E1FB /* StoreKitTesting.swift */,
+				A7E668C426B4A82700CE10BA /* buzzer.wav */,
 				A70511F52593F28D002D801F /* Assets.xcassets */,
 				A70511FA2593F28D002D801F /* Info.plist */,
 				A70511F72593F28D002D801F /* Preview Content */,
@@ -149,29 +153,39 @@
 			path = Modifiers;
 			sourceTree = "<group>";
 		};
-		A76053BF25942E4C00A0A6AC /* Views */ = {
+		A79109AC2749C9870011BA9C /* StoreKit */ = {
 			isa = PBXGroup;
 			children = (
-				A7F3EE7A25BC8C28008ACB2F /* Navigation */,
-				A7F3F00425AF82CD00229BE6 /* PlayerCard */,
-				A76053C625942F3B00A0A6AC /* PlayerCardView.swift */,
-				A7B775A025BB7B8500E3FDDF /* Settings */,
-				A76053D5259549D500A0A6AC /* SettingsView.swift */,
-				A76053CD25942F6000A0A6AC /* PlayersLayoutView.swift */,
-				A76B18B72597E97400565C31 /* FiveSixPlayerLayoutView.swift */,
-				A7CECA32259FB9A900B783C5 /* DieRollView.swift */,
-				A714C43525B5DCAF00145001 /* HistoryView.swift */,
+				A788965925B5B2D90063E1FB /* AppReview.swift */,
 			);
-			path = Views;
+			path = StoreKit;
 			sourceTree = "<group>";
 		};
-		A76053C025942E5700A0A6AC /* Models */ = {
+		A79109AD2749CA4D0011BA9C /* DiceRoll */ = {
 			isa = PBXGroup;
 			children = (
-				A76053C225942E7900A0A6AC /* Setting.swift */,
-				A78DC90525AFC80000A41933 /* PlayerState.swift */,
+				A79F550D25A5165000522361 /* Shapes */,
+				A7CECA32259FB9A900B783C5 /* DieRollView.swift */,
 			);
-			path = Models;
+			path = DiceRoll;
+			sourceTree = "<group>";
+		};
+		A79109AE2749CAA00011BA9C /* History */ = {
+			isa = PBXGroup;
+			children = (
+				A714C43525B5DCAF00145001 /* HistoryView.swift */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		A79109AF2749CAEF0011BA9C /* PlayArea */ = {
+			isa = PBXGroup;
+			children = (
+				A7F3F00425AF82CD00229BE6 /* PlayerCard */,
+				A76B18B72597E97400565C31 /* FiveSixPlayerLayoutView.swift */,
+				A76053CD25942F6000A0A6AC /* PlayersLayoutView.swift */,
+			);
+			path = PlayArea;
 			sourceTree = "<group>";
 		};
 		A79F550D25A5165000522361 /* Shapes */ = {
@@ -203,7 +217,10 @@
 		A7B775A025BB7B8500E3FDDF /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				A76053C225942E7900A0A6AC /* SettingsState.swift */,
+				A76053D5259549D500A0A6AC /* SettingsView.swift */,
 				A7B775A125BB7B9800E3FDDF /* DebounceSettingView.swift */,
+				A79109B02749CC280011BA9C /* ColorSchemeView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -229,6 +246,8 @@
 		A7F3F00425AF82CD00229BE6 /* PlayerCard */ = {
 			isa = PBXGroup;
 			children = (
+				A78DC90525AFC80000A41933 /* PlayerState.swift */,
+				A76053C625942F3B00A0A6AC /* PlayerCardView.swift */,
 				A78DC8FE25AFC4EC00A41933 /* NextPresentedLifeView.swift */,
 			);
 			path = PlayerCard;
@@ -307,10 +326,10 @@
 				A7E668CC26B4ABB600CE10BA /* TimerSettingsView.swift in Sources */,
 				A70511F42593F28C002D801F /* ContentView.swift in Sources */,
 				A78DC90225AFC54300A41933 /* Anchors.swift in Sources */,
-				A788965A25B5B2D90063E1FB /* StoreKitTesting.swift in Sources */,
+				A788965A25B5B2D90063E1FB /* AppReview.swift in Sources */,
 				A79F552325A53D1500522361 /* D20Shape.swift in Sources */,
 				A7F3EE7C25BC8CDD008ACB2F /* TrailingView.swift in Sources */,
-				A76053C325942E7900A0A6AC /* Setting.swift in Sources */,
+				A76053C325942E7900A0A6AC /* SettingsState.swift in Sources */,
 				A78DC90625AFC80000A41933 /* PlayerState.swift in Sources */,
 				A7B775A225BB7B9800E3FDDF /* DebounceSettingView.swift in Sources */,
 				A714C43625B5DCAF00145001 /* HistoryView.swift in Sources */,
@@ -320,6 +339,7 @@
 				A74DB78326EE631700285F91 /* DoneButton.swift in Sources */,
 				A76B18B82597E97400565C31 /* FiveSixPlayerLayoutView.swift in Sources */,
 				A79F551725A51C0600522361 /* D6Shape.swift in Sources */,
+				A79109B12749CC280011BA9C /* ColorSchemeView.swift in Sources */,
 				A79F552C25A66BAD00522361 /* HVStack.swift in Sources */,
 				A7CECA33259FB9A900B783C5 /* DieRollView.swift in Sources */,
 				A76053D6259549D500A0A6AC /* SettingsView.swift in Sources */,

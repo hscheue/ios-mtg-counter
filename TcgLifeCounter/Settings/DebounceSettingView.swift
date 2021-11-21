@@ -17,7 +17,7 @@ struct DebounceSettingView {
             set: { setting.debounceValue = values[$0] }
     )}
     @State var showingInfoDialog = false
-    @EnvironmentObject var setting: Setting
+    @EnvironmentObject var setting: SettingsState
 }
 
 extension DebounceSettingView {
@@ -53,6 +53,6 @@ struct DebounceSettingView_Previews: PreviewProvider {
     static var previews: some View {
         DebounceSettingView()
             .previewLayout(.sizeThatFits)
-            .environmentObject(Setting())
+            .environmentObject(SettingsState())
     }
 }

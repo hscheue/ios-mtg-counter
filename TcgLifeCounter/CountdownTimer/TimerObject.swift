@@ -10,7 +10,7 @@ import Combine
 import AVFoundation
 
 class TimerObject: ObservableObject {
-    @EnvironmentObject var setting: Setting
+    @EnvironmentObject var setting: SettingsState
     private var cancellable = Set<AnyCancellable>()
     private var timerSoundEffect: AVAudioPlayer? = nil
     @AppStorage("timeRemaining") private var timeRemaining: TimeInterval = .zero

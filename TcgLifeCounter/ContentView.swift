@@ -14,7 +14,7 @@ extension View {
 }
 
 struct ContentView: View {
-    @StateObject var settings = Setting()
+    @StateObject var settings = SettingsState()
     @State var players = [PlayerState]()
     @State var isPresentingRestartAlert = false
     
@@ -27,7 +27,7 @@ struct ContentView: View {
     }
     
     func resetPlayers() {
-        AppReviewController.playerStateActivityMetricReached(playerStates: players);
+        AppReview.playerStateActivityMetricReached(playerStates: players);
         
         for player in players {
             player.history.removeAll()

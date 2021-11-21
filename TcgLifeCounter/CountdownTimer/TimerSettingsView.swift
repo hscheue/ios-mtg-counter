@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TimerSettingsView: View {
-    @EnvironmentObject var env: Setting
+    @EnvironmentObject var env: SettingsState
     
     var boolBinding: Binding<Bool> {
         return Binding(get: {
@@ -50,6 +50,6 @@ struct TimerSettingsView_Previews: PreviewProvider {
         List {
             TimerSettingsView()
         }
-        .environmentObject(Setting())
+        .environmentObject(SettingsState())
     }
 }

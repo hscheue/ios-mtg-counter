@@ -32,20 +32,7 @@ class SharedSettings {
     }
 }
 
-struct ColorPreferencePickerView: View {
-    // TODO: Could this just be state here? Could this be observedObject?
-    @AppStorage(SharedSettings.storageKey) var storedColorScheme = SharedSettings.shared.storedColorScheme
-    
-    var body: some View {
-        Picker("Color Scheme", selection: $storedColorScheme) {
-            Text("Light Scheme")
-                .tag(StoredColorScheme.light)
-            Text("Dark Scheme")
-                .tag(StoredColorScheme.dark)
-        }
-        .pickerStyle(SegmentedPickerStyle())
-    }
-}
+
 
 @main
 struct TcgLifeCounterApp: App {

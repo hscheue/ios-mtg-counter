@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LifeEditorView: View {
-    @EnvironmentObject var setting: Setting
+    @EnvironmentObject var setting: SettingsState
     @State var value: String
     @State var errorMessage = ""
     
@@ -58,7 +58,7 @@ struct LifeEditorView: View {
 }
 
 struct SettingsView: View {
-    @EnvironmentObject var setting: Setting
+    @EnvironmentObject var setting: SettingsState
     @AppStorage("dciNumber") var dciNumber: String = ""
     @State var isPresentingLifeEditor = false
     
@@ -106,7 +106,7 @@ struct SettingsView: View {
                         isPresentingLifeEditor.toggle()
                     }
             }
-            ColorPreferencePickerView()
+            ColorSchemeView()
             Toggle("Players facing outwards", isOn: $setting.playersFaceOutwards)
             DebounceSettingView()
             
@@ -135,7 +135,7 @@ struct SettingsView_Previews: PreviewProvider {
                 .navigationBarTitleDisplayMode(.inline)
         }
         .navigationViewStyle(StackNavigationViewStyle())
-        .environmentObject(Setting())
+        .environmentObject(SettingsState())
     }
 }
 
@@ -143,7 +143,7 @@ struct LeaveFeedbackSectionView: View {
     var body: some View {
         Section(header: Text("Leave feedback")) {
             Button(action: {
-                AppReviewController.openManualReview()
+                AppReview.openManualReview()
             }, label: {
                 Label("Write a review in the App Store", systemImage: "star.leadinghalf.fill")
             })
