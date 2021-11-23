@@ -49,6 +49,12 @@ struct NewPlayerCardView: View {
             Rectangle()
                 .fill(fillColor)
             
+            Rectangle()
+                .fill(opacityGradientHorizontal)
+            
+            Rectangle()
+                .fill(opacityGradientVertical)
+            
             HVStack() {
                 NewButtonView(
                     playerState: playerState,
@@ -67,6 +73,8 @@ struct NewPlayerCardView: View {
                 horizontal: true
             )
         }
+        .clipShape(RoundedRectangle(cornerRadius: 42.0, style: .continuous))
+        .shadow(color: shadowColor, radius: 5, x: 2.0, y: 2.0)
     }
 }
 
@@ -76,6 +84,29 @@ extension NewPlayerCardView {
     }
     func adjustLifeByTap(by adjustment: Int) {
         playerState.inc(by: adjustment)
+    }
+    var gradient: Gradient {
+        let base = colorScheme == .dark
+            ? Color.white
+            : Color.black
+        
+        return .init(stops: [
+            Gradient.Stop(color: base.opacity(0.05), location: 0.05),
+            Gradient.Stop(color: base.opacity(0.01), location: 0.1),
+            Gradient.Stop(color: base.opacity(0), location: 0.3),
+            Gradient.Stop(color: base.opacity(0), location: 0.7),
+            Gradient.Stop(color: base.opacity(0.01), location: 0.9),
+            Gradient.Stop(color: base.opacity(0.05), location: 0.95),
+        ])
+    }
+    var opacityGradientHorizontal: LinearGradient {
+        .init(gradient: gradient, startPoint: .leading, endPoint: .trailing)
+    }
+    var opacityGradientVertical: LinearGradient {
+        .init(gradient: gradient, startPoint: .top, endPoint: .bottom)
+    }
+    var shadowColor: Color {
+        colorScheme == .light ? Color.gray.opacity(0.4) : Color.black
     }
 }
 

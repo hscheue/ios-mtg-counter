@@ -65,7 +65,7 @@ struct SettingsView: View {
     var body: some View {
         List {
             Section {
-                Stepper(value: $setting.playerCount, in: 1...6) {
+                Stepper(value: $setting.playerCount, in: 1...8) {
                     HStack {
                         Text("Player Count")
                         Spacer()

@@ -134,6 +134,45 @@ struct FiveSixPlayerLayoutView: View {
     }
 }
 
+struct SevenEightPlayerLayoutView: View {
+    let players: [PlayerState]
+    var outwards: Bool = false
+    let indexRanges = [0..<3, 3..<6]
+    
+    @Environment(\.verticalSizeClass) var verticalSizeClass
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    
+    var vertical: Bool {
+        verticalSizeClass != .compact
+            && horizontalSizeClass != .regular
+    }
+    
+    var body: some View {
+        HStack {
+            VStack {
+                RotationGeometryLeftView(content: NewPlayerCardView(playerState: players[0]))
+                RotationGeometryLeftView(content: NewPlayerCardView(playerState: players[1]))
+                RotationGeometryLeftView(content: NewPlayerCardView(playerState: players[2]))
+                RotationGeometryLeftView(content: NewPlayerCardView(playerState: players[3]))
+            }
+            if (!outwards) {
+                VStack {
+                    RotationGeometryLeftView(content: NewPlayerCardView(playerState: players[4]))
+                    RotationGeometryLeftView(content: NewPlayerCardView(playerState: players[5]))
+                    RotationGeometryLeftView(content: NewPlayerCardView(playerState: players[6]))
+                    if (players.count == 8) { RotationGeometryLeftView(content: NewPlayerCardView(playerState: players[7])) }
+                }
+            } else {
+                VStack {
+                    RotationGeometryRightView(content: NewPlayerCardView(playerState: players[4]))
+                    RotationGeometryRightView(content: NewPlayerCardView(playerState: players[5]))
+                    RotationGeometryRightView(content: NewPlayerCardView(playerState: players[6]))
+                    if (players.count == 8) { RotationGeometryRightView(content: NewPlayerCardView(playerState: players[7])) }
+                }
+            }
+        }
+    }
+}
 struct FivePlayerLayoutView_Previews: PreviewProvider {
     static let players = (0..<6).map { i in PlayerState(i, life: 100 / (i + 1), debounce: 2.0) }
     static var previews: some View {

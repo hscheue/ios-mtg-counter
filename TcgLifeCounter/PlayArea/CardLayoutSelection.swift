@@ -12,24 +12,26 @@ struct PlayersLayoutView: View {
     var outwards: Bool = false
     
     var body: some View {
-        Group {
-            if players.count == 1 {
+        if players.count == 0 {
+            EmptyView()
+        } else
+        if players.count == 1 {
+            NewPlayerCardView(playerState: players[0])
+        } else if players.count == 2 {
+            VStack {
+                NewPlayerCardView(playerState: players[1])
+                    .rotationEffect(outwards ? .degrees(180) : .zero)
                 NewPlayerCardView(playerState: players[0])
-            } else if players.count == 2 {
-                VStack {
-                    NewPlayerCardView(playerState: players[1])
-                        .rotationEffect(outwards ? .degrees(180) : .zero)
-                    NewPlayerCardView(playerState: players[0])
-                }
-            } else if players.count == 3 {
-                ThreePlayerLayoutView(players: players, outwards: outwards)
-            } else if players.count == 4 {
-                FourPlayerLayoutView(players: players, outwards: outwards)
-            } else if players.count > 4 {
-                FiveSixPlayerLayoutView(players: players, outwards: outwards)
             }
+        } else if players.count == 3 {
+            ThreePlayerLayoutView(players: players, outwards: outwards)
+        } else if players.count == 4 {
+            FourPlayerLayoutView(players: players, outwards: outwards)
+        } else if players.count >= 5 && players.count < 7 {
+            FiveSixPlayerLayoutView(players: players, outwards: outwards)
+        } else {
+            SevenEightPlayerLayoutView(players: players, outwards: outwards)
         }
-        .padding(4)
     }
 }
 
